@@ -62,12 +62,14 @@ I used to be obsessed with Genshin Impact and my favorite character is [Yoimiya]
   <li>
     Favorite Male Singer: <a href="https://www.youtube.com/channel/UCYrPdQonkZ4sTE7_u14zVjg">Jay Chou</a>
     <br>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/IoCoIxkGkVw?si=vPnvDN1xdl0VNaVr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/C12-p5eXPEw?si=QzjKCXGD6Pu7j3en" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/IoCoIxkGkVw?si=vPnvDN1xdl0VNaVr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
   </li>
   <li>
     Favorite Female Singer: <a href="https://www.taylorswift.com/">Taylor Swift</a>
     <br>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/cMPEd8m79Hw?si=ZVJAwmO8tVkl8qjL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/HecuCs2qVlY?si=3GvX3GC5lqc6kYZX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/cMPEd8m79Hw?si=ZVJAwmO8tVkl8qjL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
   </li>
   <li>
     Favorite Movies: <a href="https://www.imdb.com/title/tt0046250/">Roman Holiday</a> by William Wyler, <a href="https://www.imdb.com/title/tt0146271/">April Story</a> by Shunji Iwai, <a href="https://www.imdb.com/title/tt0120731/">The Legend of 1900</a> by Giuseppe Tornatore...
