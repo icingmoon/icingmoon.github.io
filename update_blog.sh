@@ -10,9 +10,6 @@ else
   COMMIT_MESSAGE="\$1"
 fi
 
-# Assign the first argument as the commit message
-COMMIT_MESSAGE="\$1"
-
 # Add changes to the staging area
 git add .
 
