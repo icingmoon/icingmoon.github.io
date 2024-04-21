@@ -26,49 +26,80 @@ titles:
 key: page-about
 ---
 
-![TeXt Theme](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/TeXt-home.jpg)
+Hi, this is Tanglee's blog. You may come across some other nicknames of mine, such as [tl2cents](https://github.com/tl2cents), [IcingMoon](https://cryptohack.org/user/IcingMoon/).
 
-TeXt is a super customizable Jekyll theme for personal site, team site, blog, project, documentation, etc. Similar to iOS 11 style, it has large and prominent titles, round buttons and cards.
+Most the posts here are written in English, while some of them are also written in Chinese. I will try to keep the English version up-to-date. If you find any mistakes or have any suggestions, please feel free to contact me via email or other social media (`tl2cents` on discord).
 
-```javascript
-(() => console.log('Hello, World!'))();
-```
+## CTF Stuff
 
-## Features
+I am a CTF player, mainly focusing on crypto and blockchain. I play for [Never Stop Exploiting](https://nese.team/) abbr. NeSE in most international CTF competitions. In spare time, I also participate in some other CTF teams, such as [Nebula](https://ctftime.org/team/168863/).
 
-- Responsive
-- Semantic HTML
-- Skins
-- Highlight Theme
-- Internationalization
-- Search
-- Table of contents
-- Authors
-- Additional styles (alert, tag, image, icon, button, grid, etc)
-- Extensions (audios, videos, slides, demos)
-- Markdown enhancements ([MathJax](https://www.mathjax.org/), [mermaid](https://mermaidjs.github.io/), [chartjs](http://www.chartjs.org/))
-- Sharing ([AddToAny](https://www.addtoany.com/), [AddThis](https://www.addthis.com/))
-- Comments ([Disqus](https://disqus.com/), [Gitalk](https://gitalk.github.io/), [Valine](https://valine.js.org/en/))
-- Pageview ([LeanCloud](https://leancloud.cn/))
-- Analytics ([Google Analytics](https://analytics.google.com/analytics/web/))
-- RSS ([jekyll-feed](https://github.com/jekyll/jekyll-feed))
+I write some writeups of the CTF challenges I solved, you can find them in [tl2cents's blog](https://tl2cents.github.io/), most of which are written in Chinese. 
 
-## Skins
+## Edu. & Research
 
-TeXt has 6 built-in skins, you can also set up your own skin.
+I got my bachelor's degree in information security from University of Science and Technology of China aka USTC from 2018 to 2022.
 
-| `default` | `dark` | `forest` |
-| --- |  --- | --- |
-| ![Default](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_default.jpg) | ![Dark](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_dark.jpg) | ![Forest](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_forest.jpg) |
+I am currently a Ph.D. student in cybersecurity at Institute of Information Engineering, University of Chinese Academy of Sciences. My research interests include zero-knowleddge proof, blockchain security, and applied cryptography. Currently, my main research focus is on SNARKs and their applications in blockchain.
 
-| `ocean` | `chocolate` | `orange` |
-| --- |  --- | --- |
-| ![Ocean](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_ocean.jpg) | ![Chocolate](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_chocolate.jpg) | ![Orange](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_orange.jpg) |
+## Miscellaneous
 
-### Highlight Theme
+I used to be obsessed with Genshin Impact and my favorite character is [Yoimiya](https://genshin.hoyoverse.com/en/character/inazuma?char=2). Currently, seems like not so many games can attract me anymore and I am more into programming and reading in my spare time. Still, I play some games occasionally including [Maj-soul](https://www.maj-soul.com/), [Palworld](https://store.steampowered.com/app/1623730/Palworld/), and [Genshin Impact](https://genshin.mihoyo.com/en/).
 
-TeXt use [Tomorrow](https://github.com/chriskempson/tomorrow-theme) as the highlight theme.
+<details>
+<summary><b>More about some favorites</b></summary>
+<ul>
+  <li>
+    Songs recently falling into: <a href="https://www.youtube.com/watch?v=-h_yBTriuaY">24/7,365</a>
+    <br>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/-h_yBTriuaY?si=HjH467Vbo16TiH-J" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </li>
+  <li>
+    Favorite Band: <a href="https://www.coldplay.com/">Coldplay</a>
+    <br>
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/igG7kfjTvVQ?si=gP4JbqTCRqZUNAdb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </li>
+  <li>
+    Favorite Male Singer: <a href="https://www.youtube.com/channel/UCYrPdQonkZ4sTE7_u14zVjg">Jay Chou</a>
+    <br>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/IoCoIxkGkVw?si=vPnvDN1xdl0VNaVr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </li>
+  <li>
+    Favorite Female Singer: <a href="https://www.taylorswift.com/">Taylor Swift</a>
+    <br>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/cMPEd8m79Hw?si=ZVJAwmO8tVkl8qjL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </li>
+  <li>
+    Favorite Movies: <a href="https://www.imdb.com/title/tt0046250/">Roman Holiday</a> by William Wyler, <a href="https://www.imdb.com/title/tt0146271/">April Story</a> by Shunji Iwai, <a href="https://www.imdb.com/title/tt0120731/">The Legend of 1900</a> by Giuseppe Tornatore...
+  </li>
+</ul>
+</details>
 
-| `tomorrow` | `tomorrow-night` | `tomorrow-night-eighties` | `tomorrow-night-blue` | `tomorrow-night-bright` |
-| --- |  --- | --- | --- |  --- |
-| ![Tomorrow](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow.png) | ![Tomorrow Night](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night.png) | ![Tomorrow Night Eighties](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night-eighties.png) | ![Tomorrow Night Blue](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night-blue.png) | ![Tomorrow Night Bright](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night-bright.png) |
+## Friends & Links
+
+Friends' and some awesome blogs I follow.
+
+Some links for crypto stuff:
+
+- sqrt-1: [https://sqrt-1.me/](https://sqrt-1.me/)
+- mcfx: [https://mcfx.us/](https://mcfx.us/)
+- roadicng: [https://roadicing.com/](https://roadicing.com/)
+- y011d4: [https://blog.y011d4.com/](https://blog.y011d4.com/)
+- tover: [https://tover.xyz/](https://tover.xyz/)
+- grhkm: [https://grhkm21.github.io/](https://grhkm21.github.io/)
+- maple3142: [https://blog.maple3142.net/](https://blog.maple3142.net/)
+- joseph: [https://jsur.in/](https://jsur.in/)
+- soreatu: [https://blog.soreatu.com/](https://blog.soreatu.com/)
+
+
+Resources/blogs for zkp & blockchain:
+
+- **Vitalik Buterin**: [https://vitalik.eth.limo/](https://vitalik.eth.limo/)
+- Soliditylang: [https://soliditylang.org/blog/category/security-alerts/](https://soliditylang.org/blog/category/security-alerts/)
+- ZKP mooc of UC Berkeley: [https://zk-learning.org/](https://zk-learning.org/)
+- ZKP courses of MIT: [https://zkiap.com/](https://zkiap.com/)
+- Dankrad Feist: [https://dankradfeist.de/](https://dankradfeist.de/)
+- Alin Tomescu: [https://alinush.github.io/](https://alinush.github.io/)
+- gss1: [https://hodl.page/](https://hodl.page/)
+- aandds: [https://aandds.com/categories.html](https://aandds.com/categories.html)
+- Sigma Prime: [https://blog.sigmaprime.io/](https://blog.sigmaprime.io/)
