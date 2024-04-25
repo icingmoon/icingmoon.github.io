@@ -28,13 +28,13 @@ key: page-about
 
 Hi, this is Tanglee's blog. You may come across some other nicknames of mine, such as [tl2cents](https://github.com/tl2cents), [IcingMoon](https://cryptohack.org/user/IcingMoon/).
 
-Most the posts here are written in English, while some of them are also written in Chinese. I will try to keep the English version up-to-date. If you find any mistakes or have any suggestions, please feel free to contact me via email or other social media (`tl2cents` on discord).
+Most the posts here are written in English, while some of them are also written in Chinese. I will try to keep the English version up-to-date. If you find any mistakes or have any suggestions, please feel free to contact me via [email](caxulasaela@outlook.com) or other social media (`tl2cents` on discord).
 
 ## CTF Stuff
 
 I am a CTF player, mainly focusing on crypto and blockchain. I play for [Never Stop Exploiting](https://nese.team/) abbr. NeSE in most international CTF competitions. In spare time, I also participate in some other CTF teams, such as [Nebula](https://ctftime.org/team/168863/).
 
-I write some writeups of the CTF challenges I solved, you can find them in [tl2cents's blog](https://tl2cents.github.io/), most of which are written in Chinese. 
+I write some writeups of the CTF challenges I solved, you can find them in [tl2cents's blog](https://tl2cents.github.io/), most of which are written in Chinese. I am considering migrating part of them to here ~~if I have time~~.
 
 ## Edu. & Research
 

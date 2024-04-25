@@ -181,6 +181,7 @@ analytics:
 ##############################
 markdown    : kramdown
 highlighter : rouge
+highlight_theme: tomorrow-night-bright # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
 permalink   : date
 
 exclude:
