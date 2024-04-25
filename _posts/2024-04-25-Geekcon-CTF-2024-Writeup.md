@@ -5,7 +5,7 @@ published: True
 ---
 
 {: .info}
-**tl;dr:** Writeups for Geekcon CTF 2024 including challenges `ZkMaze` and all "real" crypto challenges. I ended up in 10th place and really appreciate the challenges. The topics related to the crypto challenges are HNP, RSA and bilinear map. 
+**tl;dr:** Writeups for Geekcon CTF 2024 including challenges `ZkMaze` and all "real" crypto challenges. I ended up in 10th place and really appreciated the challenges. The topics related to the crypto challenges are HNP, RSA and bilinear map. 
 
 <!--more-->
 
@@ -34,9 +34,9 @@ template checkInMaze(n) {
 
 
 
-`<-- ` is used and the values of `tmp_x` and `tmp_y` is hence not constrained in the final r1cs of proof. This means we can select the arbitrary value of `tmp_x` and `tmp_y` and generate a new proof for the modified circuit which can still be verified by the verifier of the original circuit.
+`<-- ` is used and the values of `tmp_x` and `tmp_y` are hence not constrained in the final r1cs of proof. It means we can assign arbitrary values to `tmp_x` and `tmp_y` and generate a new proof for the modified circuit which can still be verified by the verifier of the original circuit.
 
-Therefore, we fixed `tmp_x = 1` and `tmp_y=1` and in this case `CheckInMaze` always settles!
+Therefore, we fix `tmp_x = 1` and `tmp_y=1` and in this case `CheckInMaze` always settles!
 
 
 
@@ -716,13 +716,13 @@ This sample should be solved by the conclusion of paper : [Reconstructing RSA Pr
 
 
 
-You can refer to my repository [RSA-PEM-Reconstructor](https://github.com/tl2cents/RSA-PEM-Reconstructor) for detailed exploit and other related challenges. If you like it, please give me star!
+You can refer to my repository [RSA-PEM-Reconstructor](https://github.com/tl2cents/RSA-PEM-Reconstructor) for detailed exploit and other related challenges. If you like it, please give me a star!
 
 
 
 ## Real or Not
 
-I use the api from [sight engine](https://sightengine.com/docs/getstarted) which is accurate. It answers about 3.5s for one image and is not enough for the timer set in the server. Therefore, I use a cache-and-hit strategy to solve the challenge (guessing there are not so many images in the server). Every time we receive an image, we calculate its hash, get an answer from the api and then store a (hash, answer) pair in a dictionary. After several tries,  most of the images hit the cache dictionary and we can obtain the flag.
+I use the api from [sight engine](https://sightengine.com/docs/getstarted) which is accurate. It answers about 3.5s for one image and is not enough for the timer set in the server. Therefore, I used a cache-and-hit strategy to solve the challenge (guessing there are not so many images in the server). Every time we receive an image, we calculate its hash, get an answer from the api and then store a (hash, answer) pair in a dictionary. After several tries,  most of the images hit the cache dictionary and we can obtain the flag.
 
 
 
