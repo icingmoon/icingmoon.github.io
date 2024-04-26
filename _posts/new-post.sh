@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# from https://github.com/alinush/alinush.github.io
 set -e
 
 scriptdir=$(cd $(dirname $(readlink -f $0)); pwd -P)

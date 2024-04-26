@@ -13,6 +13,10 @@ published: True
 
 ## ZkMaze
 
+{: .success}
+**Challenge Info**: I made a maze, I think no one can reach the target...Right? flag format flag{.*}. [Attachment](/assets/ctf-stuff/2024-geekcon/ZkMaze_b5c6fb7f75478ea5b334d53d067e097b.7z)
+
+
 After auditing the codes of circom circuit, we can find extremely unsafe operations in `CheckInMaze` template：
 
 
@@ -114,6 +118,10 @@ $ snarkjs groth16 prove circuit1.zkey witness.wtns proof.json public.json
 
 ## BabyPairing
 
+{: .success}
+**Challenge Info**: I believe a larger space is good for security. I am testing my PKE instance with a short paragraph. The flag is of the format `flag{a_sentence_replacing_all_spaces_with_underlines}`. [Attachment](/assets/ctf-stuff/2024-geekcon/babypairing_da1629e81076583b7e19ff8bdec59654.tar.gz)
+
+
 The public curve parameters are:
 
 
@@ -200,10 +208,16 @@ $$
 
 This derives $e(C_{22} - C_{12}, G) = e(C_{21} - C_{11}, PK)$. It is an effective ciphertext distinguisher which we can use to reduce the original decryption problem in $E$​ to the decryption problem of `ascii` substitution cipher! We can decrypt most of the characters through frequency attack.
 
+Finally we can get ciphertext like:
 
+```python
+abcdefghijkibldmfdndodfjbfpamqdkaorshndfsbatatodmjkhgcdcuobdkdmvtjmrbkmkabavtbfawdnmkavmfnmkhgibgdjxrkydvhcdsdzlksdzlkydvhcdcufatkchfawkAdvhcdrdmokmfjkhufjdBmjdkqmkCekyrdmvtchcdfabkqodBbhekrdagidzabfpibldmkfhsgimldbfxsbfadokahDcsdmodyhofsdpohEsdidmofEdihndsdkegFdosdGhrmfjsdmpdmkEdGheofdratohepwibgdheoqdokHdvabndkBtmfpdheoqobhDbaIdkCtbgamfjheoefjdDkamfjbfpjdzqdfksdvhcdbfauatdshoijmkyimflvmfnmkdCmfjidxndmkydmeabgeiJrvhcqidKcmkadoqbdvdkabcdbCatdmoabkaLtmakwmqdkeCmiJgimpMrheNtmndNghefjOatdNybibfdmoOqmbobfpNahPyodmlNjQtNmkCecqabhfR
+```
 
-<details>
-<summary><b>Exploit</b>(Click to expand)</summary>
+Put it in [quipqiup](https://quipqiup.com/) and solves for the flag.
+
+<details class="exploit">
+<summary><b>Exploit</b></summary>
 <div markdown="1">
 
 ``` python
@@ -330,20 +344,13 @@ s = ''.join(msg)
 print(f"[+] {s = }")
 ```
 
-Ciphertext
-
-```python
-abcdefghijkibldmfdndodfjbfpamqdkaorshndfsbatatodmjkhgcdcuobdkdmvtjmrbkmkabavtbfawdnmkavmfnmkhgibgdjxrkydvhcdsdzlksdzlkydvhcdcufatkchfawkAdvhcdrdmokmfjkhufjdBmjdkqmkCekyrdmvtchcdfabkqodBbhekrdagidzabfpibldmkfhsgimldbfxsbfadokahDcsdmodyhofsdpohEsdidmofEdihndsdkegFdosdGhrmfjsdmpdmkEdGheofdratohepwibgdheoqdokHdvabndkBtmfpdheoqobhDbaIdkCtbgamfjheoefjdDkamfjbfpjdzqdfksdvhcdbfauatdshoijmkyimflvmfnmkdCmfjidxndmkydmeabgeiJrvhcqidKcmkadoqbdvdkabcdbCatdmoabkaLtmakwmqdkeCmiJgimpMrheNtmndNghefjOatdNybibfdmoOqmbobfpNahPyodmlNjQtNmkCecqabhfR
-```
-
-Put it in [quipqiup](https://quipqiup.com/) and solves for the ciphertext.
 </div>
 </details>
 
-
-
-
 ## HNP
+
+{: .success}
+**Challenge Info**: I am suffering from Herniated Nucleus Pulposus, please help me! [Attachment](/assets//ctf-stuff/2024-geekcon/HNP_1d8ae5f9e10fbe1bd5661acc53915083.tar.xz).
 
 It's a mixture of HNP-SUM and EHNP. A HNP solver is enough for this challenge with low probability. Therefore, I use an EHNP solver.
 
@@ -379,7 +386,7 @@ Notice that $A_2Y_i^\prime \le N$ and $A_2 Y_i^\prime \equiv 0 \mod 2^{341}$,  $
 
 
 $$
-X^{\prime} = Y_i X\mod N, \quad i \in[1..8]
+X^{\prime}_i = Y_i X\mod N, \quad i \in[1..8]
 $$
 
 
@@ -388,8 +395,8 @@ Actually, my solver only needs the 341 lsb leaks for solving the whole challenge
 
 
 
-<details>
-<summary><b>Exploit</b>(Click to expand)</summary>
+<details class="exploit">
+<summary><b>Exploit</b></summary>
 <div markdown="1">
 
 ```python
@@ -693,6 +700,10 @@ while True:
 
 ## SpARse
 
+{: .success}
+**Challenge Info**: You stole Alice's RSA private key, but it is sparse, can you recover the whole key? flag is `md5sum privkey.pem | awk '{print "flag{"$1"}"}'`. [Attachment](/assets/ctf-stuff/2024-geekcon/SpARse_cd0775f5bc6763992848a7060f371efd.tar.xz)
+
+
 We are given a corrupted RSA private key file in `pem` file format. We can extract as much as possible information from the perm file. One may be confused why a 2048 bit n has to be encoded as 257 byte long which is one byte more than expected and sometimes not. This is due to the symbol bit to recognize positive and negative numbers encoded in ASN.1 DER. Due to this reason, we may need to try all possible combinations.
 
 After decoding all the known bits, we have approximately 29.81% leaks of $p,q,d,d_p,d_q$​ :
@@ -722,9 +733,15 @@ You can refer to my repository [RSA-PEM-Reconstructor](https://github.com/tl2cen
 
 ## Real or Not
 
+{: .success}
+**Challenge Info**: Are these pictures real or not? [Attachment](/assets/ctf-stuff/2024-geekcon/RealOrNot.zip)
+
 I use the api from [sight engine](https://sightengine.com/docs/getstarted) which is accurate. It answers about 3.5s for one image and is not enough for the timer set in the server. Therefore, I used a cache-and-hit strategy to solve the challenge (guessing there are not so many images in the server). Every time we receive an image, we calculate its hash, get an answer from the api and then store a (hash, answer) pair in a dictionary. After several tries,  most of the images hit the cache dictionary and we can obtain the flag.
 
 
+<details class="exploit">
+<summary><b>Exploit</b></summary>
+<div markdown="1">
 
 ```python
 from pwn import remote, process, context, log
@@ -828,7 +845,8 @@ log.info(io.recvline().decode().strip())
 io.close()
 ```
 
-
+</div>
+</details>
 
 ## Real or Not Revenge
 

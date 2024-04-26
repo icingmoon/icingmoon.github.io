@@ -1,3 +1,95 @@
 /* start custom scss snippet */
+.article__content {
+  details {
+    // add margin to the details element
+    margin: map-get($spacers, 2) 0;
+
+    summary {
+      &.success {
+        padding: map-get($spacers, 2) map-get($spacers, 3);
+        background-color: rgba($green, .1);
+        border: 1px solid $green;
+        border-radius: map-get($base, border-radius);
+      }
+
+      &.info {
+        padding: map-get($spacers, 2) map-get($spacers, 3);
+        background-color: rgba($blue, .1);
+        border: 1px solid $blue;
+        border-radius: map-get($base, border-radius);
+      }
+
+      &.warning {
+        padding: map-get($spacers, 2) map-get($spacers, 3);
+        background-color: rgba($yellow, .1);
+        border: 1px solid $yellow;
+        border-radius: map-get($base, border-radius);
+      }
+
+      &.error {
+        padding: map-get($spacers, 2) map-get($spacers, 3);
+        background-color: rgba($red, .1);
+        border: 1px solid $red;
+        border-radius: map-get($base, border-radius);
+      }
+    }
+
+    &.error {
+      // add border and box to contain all the details
+      border: 1px solid $red;
+      border-radius: map-get($base, border-radius);
+
+      summary {
+        background-color: rgba($red, .1);
+        padding: map-get($spacers, 2) map-get($spacers, 3);
+      }
+    }
+
+    &.warning {
+      // add border and box to contain all the details
+      border: 1px solid $yellow;
+      border-radius: map-get($base, border-radius);
+
+      summary {
+        background-color: rgba($yellow, .1);
+        padding: map-get($spacers, 2) map-get($spacers, 3);
+      }
+    }
+
+    &.info {
+      // add border and box to contain all the details
+      border: 1px solid $blue;
+      border-radius: map-get($base, border-radius);
+
+      summary {
+        background-color: rgba($blue, .1);
+        padding: map-get($spacers, 2) map-get($spacers, 3);
+      }
+    }
+
+    &.success {
+      // add border and box to contain all the details
+      border: 1px solid $green;
+      border-radius: map-get($base, border-radius);
+
+      summary {
+        background-color: rgba($green, .1);
+        padding: map-get($spacers, 2) map-get($spacers, 3);
+      }
+    }
+
+    &.exploit {
+      // add border and box to contain all the details
+      border: 1px solid $blue;
+      border-radius: map-get($base, border-radius);
+
+      summary {
+        background-color: rgba($blue, .1);
+        padding: map-get($spacers, 2) map-get($spacers, 3);
+      }
+    }
+
+  }
+}
 
 /* end custom scss snippet */
