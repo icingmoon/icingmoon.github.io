@@ -29,7 +29,7 @@ r0system，r1system，r2system 的题解。最终目的都是拿到 Alice 和 Bo
 
   可以直接注册 Bob 的账户，从而拿到私钥解密数据。
 
-- **r2system** ：修复 r1system 的非预期，我们最多可以注册 10 次，注意到 PRNG 使用了多项式形式的 LCG ，这时利用类似 ecdsa-polynomial-nonce-recurrence-attack ，可以恢复出服务器的私钥 $x$ 和 PRNG 的内部状态，从而能够完全预测出最后服务器端注册 Bob 账号时的 token 的值，进而拿到 Bob 的私钥。
+- **r2system** ：修复 r1system 的非预期，最多可以注册 10 次，注意到 PRNG 使用了多项式形式的 LCG ，这时利用类似 ecdsa-polynomial-nonce-recurrence-attack ，可以恢复出服务器的私钥 $x$ 和 PRNG 的内部状态，从而能够完全预测出最后服务器端注册 Bob 账号时的 token 的值，进而拿到 Bob 的私钥。
 
 
 
@@ -81,7 +81,7 @@ s_{9} & =a_{7} s_{8}^{7}+a_{6} s_{8}^{6}+\cdots+a_1 s_{8}+a_0
 \end{aligned} \tag{P}
 $$
 
-将 (S) 带入 (P)，最终我们可以得到关于九个变量 $a_0, \cdots, a_7, x$ 的九个方程。因为 $a_i$ 在 (P) 中的最高次数都是 1，我们可以消元得到一个只与 $x$ 有关的高次的方程组，对于素数的模数 $N$ 来说，求解这样方程的根是简单的。记 $k_{i,j} = k_i - k_j$ ，关于消元的递归算法在 [A Novel Related Nonce Attack for ECDSA](https://eprint.iacr.org/2023/305.pdf) 的 Algorithm 2 中给出
+将 (S) 带入 (P)，最终可以得到关于九个变量 $a_0, \cdots, a_7, x$ 的九个方程。因为 $a_i$ 在 (P) 中的最高次数都是 1，可以消元得到一个只与 $x$ 有关的高次的方程组，对于素数的模数 $N$ 来说，求解这样方程的根是简单的。记 $k_{i,j} = k_i - k_j$ ，关于消元的递归算法在 [A Novel Related Nonce Attack for ECDSA](https://eprint.iacr.org/2023/305.pdf) 的 Algorithm 2 中给出
 
 ![image-20240609220217887](/assets/ctf-stuff/2024-r3ctf/image-20240609220217887.png)
 
@@ -486,7 +486,7 @@ F(x) &= \theta_1(f(x)) +  \theta_3(f(x)) + \cdots +   \theta_{2n-1}(f(x))\\
 \end{aligned}
 $$
 
-值得说明的是，上述结果对任意 $n$ 都成立。我们从整数商环的角度来看，考虑 $\mathbb{Z}_{n}^*$ ，有一个和上述等式很类似的定理，即模 $n$ 乘法群的元素之和为 0 （加法逆元配对）。
+值得说明的是，上述结果对任意 $n$ 都成立。从整数商环的角度来看，考虑 $\mathbb{Z}_{n}^*$ ，有一个和上述等式很类似的定理，即模 $n$ 乘法群的元素之和为 0 （加法逆元配对）。
 
 $$
 \sum_{k, gcd(k,n)=1} k = 0 \mod n
