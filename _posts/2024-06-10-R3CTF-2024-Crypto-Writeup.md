@@ -5,7 +5,7 @@ published: true
 ---
 
 {: .info}
-**tl;dr:** Writeups for R3CTF 2024 including challenges `r0,1,2system` and `TinySeal` and `SPARROW`. Nice challenges about: poly-nonce attack of ECDSA, BFV fully homomorphic encryption and linearization of symmetric cipher.
+**tl;dr:** Writeups for R3CTF 2024 including challenges `r0,1,2system` and `TinySeal` and `SPARROW`. Amazing challenges about: poly-nonce attack of ECDSA, BFV fully homomorphic encryption and linearization of symmetric cipher.
 
 <!--more-->
 
@@ -17,7 +17,7 @@ published: true
 
 ### 题目分析
 
-r0system，r1system，r2system 的题解。最终目的都是拿到 Alice 和 Bob 通过 ECDH 生成的共享密钥，只要我们拿到 Alice 和 Bob 的任意一个私钥，即可解密加密的消息。
+r0system，r1system，r2system 的题解。最终目的都是拿到 Alice 和 Bob 通过 ECDH 生成的共享密钥，只要拿到 Alice 和 Bob 的任意一个私钥，即可解密加密的消息。
 
 - **r0system**：第一问是 reset password 功能未限制用户权限，任意用户 X 登录后，可以更改其他用户的 password，从而登录上 Alice 的账户拿到私钥。
 
@@ -27,7 +27,7 @@ r0system，r1system，r2system 的题解。最终目的都是拿到 Alice 和 Bo
   if username == AliceUsername or username == AliceUsername:
   ```
 
-  于是我们可以直接注册 Bob 的账户，从而拿到私钥解密数据。
+  可以直接注册 Bob 的账户，从而拿到私钥解密数据。
 
 - **r2system** ：修复 r1system 的非预期，我们最多可以注册 10 次，注意到 PRNG 使用了多项式形式的 LCG ，这时利用类似 ecdsa-polynomial-nonce-recurrence-attack ，可以恢复出服务器的私钥 $x$ 和 PRNG 的内部状态，从而能够完全预测出最后服务器端注册 Bob 账号时的 token 的值，进而拿到 Bob 的私钥。
 
