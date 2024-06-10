@@ -28,7 +28,7 @@ key: page-about
 
 Hi, this is Tanglee's blog. You may come across some other nicknames of mine, such as [tl2cents](https://github.com/tl2cents), [IcingMoon](https://cryptohack.org/user/IcingMoon/).
 
-Most the posts here are written in English, while some of them are also written in Chinese. I will try to keep the English version up-to-date. If you find any mistakes or have any suggestions, please feel free to contact me via [email](caxulasaela@outlook.com) or other social media (`tl2cents` on discord).
+I will try to post more content in English. If you find any mistakes or have any suggestions, please feel free to contact me via [email](caxulasaela@outlook.com) or other social media (`tl2cents` on discord).
 
 ## CTF Stuff
 
