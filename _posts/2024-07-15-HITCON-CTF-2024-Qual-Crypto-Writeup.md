@@ -1,5 +1,5 @@
 ---
-tags:
+tags: CTF Writeup Cryptography
 title: HITCON CTF 2024 Qual Crypto Writeup
 published: true
 ---
@@ -756,7 +756,7 @@ How can the integer-string converting exception be triggered in this challenge?
 
 
 
-The useful triggers are rather subtle. We want to do binary search of $n - \varphi(n)$ using the check $y \le -10^{4300}$ which is stable during the whole search!  Both `json.loads` and `json.dumps` includes implicit integer string conversion and can be exploited in this challenge.
+The useful triggers are rather subtle. We want to do binary search of $n - \varphi(n)$ using the check $y \le -10^{4300}$ which is stable during the whole search!  Both `json.loads` and `json.dumps` include implicit integer string conversion and can be exploited in this challenge.
 
 We can recover approximately $0x137$ msbs of $n - \varphi(n) = p + q - 1$ and then $0x137$ msbs  of $p$ by:
 
@@ -872,7 +872,7 @@ A zero-day challenge for a crypto paper?! [Attachment](https://github.com/maple3
 
 ### Mat Prod Cryptosystem
 
-In this challenge, we need to break two encryption system claiming a security level of 128 bits in paper: [New Public-Key Cryptosystem Blueprints Using Matrix Products in $F_p$](https://eprint.iacr.org/2023/1745.pdf).
+In this challenge, we need to break two encryption systems claiming a security level of 128 bits in paper: [New Public-Key Cryptosystem Blueprints Using Matrix Products in $F_p$](https://eprint.iacr.org/2023/1745.pdf).
 
 
 
@@ -1106,7 +1106,7 @@ Finally, we can decrypt message bits sequentially by finding all the distinguish
 
 In this challenge, the condition $tr(m_i \mathbf{A}) \ll p$  hold true. To reduce the time of lattice reduction, we can use two methods to optimize:
 
-- **Bruteforcing**: $a$ bits for one $E_{k,j}$ instead of one bit for one $E_{k,j}$. For the first time we skip the first $a$ bits, and try to find $E_{k,a}$. Then brute force the first $a$ bits to find a valid partial ciphertext using $E_{k,a}$. Continue this process until the last $a$ bits.
+- **Bruteforcing**: $a$ bits for one $E_{k,j}$ instead of one bit for one $E_{k,j}$. For the first time we skip the first $a$ bits, and try to find $E_{k,a}$. Then brute force the first $a$ bits to find a valid partial ciphertext using $E_{k,a}$. Continue this process until the last $a$ bits. In the last step, only brute forcing is needed since there are no partial ciphertexts to be found.
 
 - **Lattice Reduction with Modulo**: this is what I learned from maple's codes. Typically, for a $n \times  t$ matrix $M$,  we would construct
 
@@ -1137,3 +1137,7 @@ In this challenge, the condition $tr(m_i \mathbf{A}) \ll p$  hold true. To reduc
   $$
 
   Doing LLL reduction on $L_o$ is somewhat equivalent to doing LLL reduction on $M$ modulo $p$.
+
+### Implementation
+
+Implementations of the above two attacks with detailed comments: [Attacks](https://gist.github.com/tl2cents/63f24e4a2c1005df40c7531c758847ef).
