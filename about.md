@@ -40,7 +40,7 @@ I write some writeups of the CTF challenges I solved, you can find them in [tl2c
 
 I got my bachelor's degree in information security from University of Science and Technology of China aka USTC from 2018 to 2022.
 
-I am currently a Ph.D. student in cybersecurity at Institute of Information Engineering, University of Chinese Academy of Sciences. My research interests include zero-knowleddge proof, blockchain security, and applied cryptography. Currently, my main research focus is on SNARKs and their applications in blockchain.
+I am currently a Ph.D. student at Institute of Information Engineering, University of Chinese Academy of Sciences. My research interests include zero-knowleddge proof, blockchain security, and applied cryptography. Currently, my main research focus is on SNARKs and their applications in blockchain.
 
 ## Miscellaneous
 
