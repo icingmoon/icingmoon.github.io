@@ -23,9 +23,9 @@ I implemented another secret sharing this year, but it doesn’t recover the fla
 
 ### Writeup
 
-The challenge implements a secret sharing scheme with parameters $(n,t,p) = (48, 24, 65537)$ with numpy in Python. We are given 48 shares i.e. points on the polynomial of degree 23. By lagrange interpolation, we can recover the polynomial coefficients. However, since the default type of numpy array is `int64`, the points evaluation may result in overflow of `numpy.int64`.
+The challenge implements a secret sharing scheme with parameters $(n,t,p) = (48, 24, 65537)$ in python. We are given 48 shares i.e. points on the polynomial of degree 23. By lagrange interpolation, we can recover the polynomial coefficients. However, since the default type of numpy array is `int64`, the points evaluation may result in overflow of `numpy.int64`.
 
-Denote $f(x) = \sum_{i=0}^{23} a_i x^i$ and $q, p = 2^{64}, 65537$, the points actually provided are equivalent to the following expression:
+Denote $f(x) = \sum_{i=0}^{23} a_i x^i$ and $q, p = 2^{64}, 65537$, the point coordinate $(x_i, y_i)$ are equivalent to the following expression:
 
 
 $$
@@ -725,7 +725,7 @@ The key observation pertains not to cryptographic stuff but to the characteristi
 
 At the first glance, we can find a crucial flaw in source code: the protocol only checks $e \le B$. We can input negative $e$ to leak more information of $r$. However, the verifying process in the server do checks $0 \le y < A$ and we cannot recover $r$ by modulo $e$.
 
-Right here, we can do binary search of $n - \varphi(n)$ using the check $y \ge 0$. Notice that $r$ is very close to $A$,  the closer our guess is to $n - \varphi(n)$,  the more precarious this comparison becomes (at mots 10 bits can be recovered). Again, I failed to recover enough bits of $n - \varphi(n)$. Everything is stuck here and ultimately, I have resolved to implement a timely stop-loss.
+Right here, we can do binary search of $n - \varphi(n)$ using the check $y \ge 0$. Notice that $r$ is very close to $A$,  the closer our guess is to $n - \varphi(n)$,  the more precarious this comparison becomes (at most 10 bits can be recovered). Again, I failed to recover enough bits of $n - \varphi(n)$. Everything is stuck here and ultimately, I have resolved to implement a timely stop-loss.
 
 
 
@@ -915,11 +915,11 @@ $$
 
 ### Break Direct Cryptosystem
 
-I solved this part during the competition. Given private key $D \in \mathfrak{D}$ and $E \in \mathfrak{E}$,  we can recover $M =\prod_{i=0}^{k-1} A_{\sigma(i)} D$. Since $A_i, D_i \le \alpha \ll p$, if we multiply the correct guess of $\bar A_{\sigma(0)}^{-1}$ in the left, the result matrix $M_0 = \bar A_{\sigma(0)}^{-1} M = \prod_{i=1}^{k-1} A_{\sigma(i)} D$ will be smaller than $M$ and thus we can recover the original permutation $\sigma$ sequentially.
+I solved this part during the competition. Given private key $D \in \mathfrak{D}$ and $E \in \mathfrak{E}$,  we can recover $M =\prod_{i=0}^{k-1} A_{\sigma(i)} D$. Since $A_i, D_i \le \alpha \ll p$, if we multiply by the correct guess of $\bar A_{\sigma(0)}^{-1}$ in the left, the result matrix $M_0 = \bar A_{\sigma(0)}^{-1} M = \prod_{i=1}^{k-1} A_{\sigma(i)} D$ will be smaller than $M$ and thus we can recover the original permutation $\sigma$ sequentially.
 
 {: .error}
 
-Given the ciphertext $C = \sigma \overline{\mathbf{A}}$ and public key $\bar{\mathbf{A}^{0}}, \bar{\mathbf{A}^{1}} \subset \mathfrak{D}$, can we distinguish $\bar A_{\sigma(0)}^{-1} C$ from all other choices: $\bar A_{\sigma(i)}^{-1} C, i\ne 0$ without the secret key $D, E, \mathbf{A}$?
+Given the ciphertext $C = \sigma \overline{\mathbf{A}}$ and public key $\bar{\mathbf{A}^{0}}, \bar{\mathbf{A}^{1}} \subset \mathfrak{D}$, can we distinguish $\bar A_{\sigma(0)}^{-1} C$ from all other choices: $\bar A_{\sigma(i)}^{-1} C, i\ne 0$ without the secret keys $D, E, \mathbf{A}$?
 
 
 
@@ -991,7 +991,7 @@ In this section, we need one more identity of trace which is:
 
 
 $$
-AB = \mathsf{flatten}(A)  \mathsf{flatten}(B)^T
+tr(AB) = \mathsf{flatten}(A)  \mathsf{flatten}(B)^T
 $$
 
 
@@ -1104,7 +1104,7 @@ Finally, we can decrypt message bits sequentially by finding all the distinguish
 
 **Remarks**
 
-In this challenge, the condition $tr(m_i \mathbf{A}) \ll p$  hold true. To reduce the time of lattice reduction, we can use two methods to optimize:
+In this challenge, the condition $tr(m_i \mathbf{A}) \ll p$ holds true. To reduce the time of lattice reduction, we can use two methods to optimize:
 
 - **Bruteforcing**: $a$ bits for one $E_{k,j}$ instead of one bit for one $E_{k,j}$. For the first time we skip the first $a$ bits, and try to find $E_{k,a}$. Then brute force the first $a$ bits to find a valid partial ciphertext using $E_{k,a}$. Continue this process until the last $a$ bits. In the last step, only brute forcing is needed since there are no partial ciphertexts to be found.
 
