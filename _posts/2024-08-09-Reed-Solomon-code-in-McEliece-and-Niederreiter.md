@@ -422,13 +422,13 @@ $$
 其中
 
 $$
-a_2 = F_2(\infty) = F_2(\alpha_3) = \sum_{i=1}^{k} c_{2,i} f^{(i)}(\alpha_3) = \sum_{i=1}^{k} c_{2,i} \hat H_{i, 3}  \tag{E2}
-$$
+a_2 = F_2(\infty) = F_2(\alpha_3) = \sum_{i=1}^{k} c_{2,i} f^{(i)}(\alpha_3) = \sum_{i=1}^{k} c_{2,i} \hat H_{i, 3}
 
 除此之外，任意零点之外的 $\alpha_j$ 在 $F_2(x)$ 处的点值都可以通过矩阵 $\hat H$ 计算得到：
 
 $$
-F_2\left(\alpha_j\right)=\sum_{i=1}^{k} c_{2, i} f^{(i)}\left(\alpha_j\right)=\sum_{i=1}^{k} c_{2, i} \hat H_{i, j}
+F_2\left(\alpha_j\right)=\sum_{i=1}^{k} c_{2, i} f^{(i)}\left(\alpha_j\right)=\sum_{i=1}^{k} c_{2, i} \hat H_{i, j} \tag{E2}
+$$
 $$
 
 {: .success}
@@ -507,10 +507,10 @@ $$
 
 从特殊解到一般形式的解，上述提到的解形式为 $\alpha = \\{1, 0, \infty, \alpha_4, \alpha_5, \cdots, \alpha_{k}\\}$，这样的解是无法形成校验矩阵的，因此得到该形式的解之后，我们可以通过有理变换，得到一组真正的解。
 
-选择随机元素 $r \in \mathbb{F}_q$ ，与 $s_0$ 中元素互异，则进行下述有理变换得到一组正解：
+选择随机元素 $r \in \mathbb{F}_q$ ，与 $\alpha$ 中元素互异，则进行下述有理变换得到一组正解：
 
 $$
-\alpha^\prime:=  \{\alpha_j^\prime = \frac{1}{\beta - \alpha_j}\}
+\alpha^\prime:=  \{\alpha_j^\prime = \frac{1}{r - \alpha_j}\}
 $$
 
 {: .error}
