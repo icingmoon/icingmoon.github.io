@@ -455,9 +455,9 @@ $$
 {: .success}
 **Step 4. 求解完整解 $\\{\alpha_1, \alpha_2, \cdots, \alpha_{n}\\}$**
 
-实际上如果上一步求出的 $\alpha_j$ 数目大于 $k$ 个，即可直接通过拉格朗日插值恢复出完整的 $F_1(x), F_2(x)$ 系数，进而求解根得到未知的零点 $\alpha_j, j \in \\{1, 2, k + 1, k+2, \cdots, 2k - 2\\}$。从而我们得到了一组完整的特殊解。
+实际上如果上一步求出的 $\alpha_j$ 数目大于 $k$ 个，即可直接通过拉格朗日插值恢复出完整的 $F_1(x), F_2(x)$ 系数，进而求解根得到未知的零点 $\alpha_j, j \in \\{1, 2, k + 1, k+2, \cdots, 2k - 2\\}$。由于我们不知道这些根的正确顺序，这不足以恢复出一组正确的解。
 
-同理我们可以通过 $\hat H$ 的列向量 $\\{1,3, 4, \cdots, k\\}$ 和 $\\{2,3, 4, \cdots, k\\}$ 的核空间构成的函数 $F_3(x), F_4(x)$ 求解得到未知点 $\alpha_j, j \in k + 1, k+2, \cdots, 2k - 2$ 的值。
+为了得到完整解，同理我们可以通过 $\hat H$ 的列向量 $\\{1,3, 4, \cdots, k\\}$ 和 $\\{2,3, 4, \cdots, k\\}$ 的核空间构成的函数 $F_3(x), F_4(x)$ 求解得到未知点 $\alpha_j, j \in k + 1, k+2, \cdots, 2k - 2$ 的值。整体思路就是每次将已知的 $\alpha_j$ 对应的列向量加入核空间中去求解 $F(x)$, 从而逐步恢复出完整的 $\alpha$ 向量。
 
 {: .warning}
 **Remarks**：（a）在 $\alpha_3 = \infty$ 处为零，意味着首项为 0，即 $x^{k-1}$ 的系数为 0，即最高次数降为 $k - 2$ 。（b）上述攻击算法的时间复杂度为 $\mathcal{O}(n^3)$ !
@@ -497,7 +497,25 @@ $$
 F_1(x)=a_1\left(x-\alpha_1\right)\left(x-\alpha_{k+1}\right) \cdots\left(x-\alpha_{2(k-1)}\right) \tag{F1}
 $$
 
-即 $\beta_i$ 的引入只是改变了 $c_i$ 的值。而不会影响函数 $F_1$ 。因此恢复出所有 $\\{\alpha_1, \alpha_2, \cdots, \alpha_{n}\\}$ 之后，我们可以通过核空间的方程 (K) 中得到 $k - 1$ 组与 $\beta_i$ 有关的方程，其中固定 $\beta_1 = 1$，因此 $k-1$ 组方程刚好生成唯一解 。重复上述过程，我们可以恢复出完整的 $\bar \beta = (\beta_1, \cdots, \beta_{n})$ 向量。
+即 $\beta_i$ 的引入只是改变了 $c_i$ 的值。而不会影响函数 $F_1$ 。因此恢复出所有 $\\{\alpha_1, \alpha_2, \cdots, \alpha_{n}\\}$ 之后，我们考虑恢复出 $\beta$ 向量。
+
+
+因为，$\beta$ 的信息与 $\alpha$ 信息在矩阵中分布是相反的，这里我们考虑 $k$ 组 $k+1$ 维的行向量的核空间，维度以 $1, 2, \cdots, k+1$ 为例，从矩阵的方式考虑方程，这里的关键点是利用 $f_i$ 的线性独立关系去除系数矩阵 $S_{k \times k}$ 的影响：
+
+$$
+\begin{gathered}
+\sum_{j=1}^{k+1} c_j \beta_j f^{(i)}\left(\alpha_j\right)=0 \quad 1 \leq i \leq k \\
+\Longleftrightarrow \\
+S \cdot V\left(\alpha_1, \ldots, \alpha_n\right) \cdot \operatorname{Diag}(\mathbf{c}) \cdot \mathbf{\beta} =0 \\
+\Longleftrightarrow(S \text { is invertible }) \\
+V\left(\alpha_1, \ldots, \alpha_n\right) \cdot \operatorname{Diag}(\mathbf{c}) \cdot \mathbf{\beta} =0
+\end{gathered}
+$$
+
+
+其中 $V\left(\alpha_1, \ldots, \alpha_n\right)$ 是 $k \times n$ 的部分范德蒙矩阵，$\mathbf{\beta}$ 是 $(\beta_1, \cdots, \beta_{k+1})$ 向量，$\mathbf{c}$ 是核空间的向量，可以通过矩阵 $\hat H$ 计算得到（$k$ 组 $k+1$ 维的行向量的核空间）。
+
+固定 $\beta_1 = 1$，上述 $k$ 组方程刚好生成唯一解。重复上述过程，我们可以恢复出完整的 $\bar \beta = (\beta_1, \cdots, \beta_{n})$ 向量。
 
 
 &nbsp;
