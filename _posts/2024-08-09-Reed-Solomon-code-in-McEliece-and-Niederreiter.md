@@ -22,7 +22,7 @@ published: true
 {: .error}
 **定义** ： Generalized Reed-Solomon Code
 
-正整数 $k \le n \le q$ ，令 $\alpha \in \mathbb{F}_q^n$  是不同元素的 n-元组，即 $\alpha=\left(\alpha_1, \ldots, \alpha_n\right)$ ，其中 $\alpha_i \neq \alpha_j, \forall i \neq j \in\{1, \ldots, n\}$ ；令 $\beta \in \mathbb{F}_q^n$ 是非零的 n-元组，即 $\beta=\left(\beta_1, \ldots, \beta_n\right)$, 其中 $\beta_i \neq 0 , i \in\{1, \ldots, n\}$，广义的里德-所罗门编码（Generalized Reed-Solomon Code），码字长度为 $n$ ，线性子空间维数为 $k$ ，记为 ，其码字空间定义如下：
+正整数 $k \le n \le q$ ，令 $\alpha \in \mathbb{F}_q^n$  是不同元素的 n-元组，即 $\alpha=\left(\alpha_1, \ldots, \alpha_n\right)$ ，其中 $\alpha_i \neq \alpha_j, \forall i \neq j \in\{1, \ldots, n\}$ ；令 $\beta \in \mathbb{F}_q^n$ 是非零的 n-元组，即 $\beta=\left(\beta_1, \ldots, \beta_n\right)$, 其中 $\beta_i \neq 0 , i \in \{1, \ldots, n\}$，广义的里德-所罗门编码（Generalized Reed-Solomon Code），码字长度为 $n$ ，线性子空间维数为 $k$ ，记为 ，其码字空间定义如下：
 
 $$
 \operatorname{GRS}_{n, k}(\alpha, \beta)=\left\{\left(\beta_1 f\left(\alpha_1\right), \ldots, \beta_n f\left(\alpha_n\right)\right) \mid f \in \mathbb{F}_q[x], \operatorname{deg}(f)<k\right\} .

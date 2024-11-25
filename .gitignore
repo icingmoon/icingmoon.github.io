@@ -25,3 +25,6 @@ Gemfile.lock
 _site/
 .jekyll-metadata
 .jekyll-cache/
+
+# Ignore the .py file in the root directory
+*.py

@@ -26,25 +26,24 @@ titles:
 key: page-about
 ---
 
-Hi, this is Tanglee's blog. You may come across some other nicknames of mine, such as [tl2cents](https://github.com/tl2cents), [IcingMoon](https://cryptohack.org/user/IcingMoon/).
+Welcome to Tanglee's blog. You may also encounter some of my other nicknames, such as [tl2cents](https://github.com/tl2cents), [IcingMoon](https://cryptohack.org/user/IcingMoon/).
 
-I will try to post more content in English. If you find any mistakes or have any suggestions, please feel free to contact me via [email](caxulasaela@outlook.com) or other social media (`tl2cents` on discord).
+
+I aim to publish more content in English. If you find any errors or have suggestions, please feel free to contact me via [email](caxulasaela@outlook.com) or through other social media platforms (`tl2cents` on discord).
 
 ## CTF Stuff
 
-I am a CTF player, mainly focusing on crypto and blockchain. I play for [Never Stop Exploiting](https://nese.team/) abbr. NeSE in most international CTF competitions. In spare time, I also participate in some other CTF teams, such as [Nebula](https://ctftime.org/team/168863/).
-
-I write some writeups of the CTF challenges I solved, you can find them in [tl2cents's blog](https://tl2cents.github.io/), most of which are written in Chinese. I am considering migrating part of them to here ~~if I have time~~.
+I am a CTF player, primarily focusing on cryptography and blockchain. I represent [Never Stop Exploiting](https://nese.team/) (abbreviated as NeSE) in most international CTF competitions. Previous writeups of mine can be found on [tl2cents's blog](https://tl2cents.github.io/)—most of which are written in Chinese. I am considering migrating some of these write-ups here ~~if I have time~~.
 
 ## Edu. & Research
 
-I got my bachelor's degree in information security from University of Science and Technology of China aka USTC from 2018 to 2022.
+I got my bachelor's degree in Information Security from the University of Science and Technology of China (USTC) between 2018 and 2022.
 
-I am currently a Ph.D. student at Institute of Information Engineering, University of Chinese Academy of Sciences. My research interests include zero-knowleddge proof, blockchain security, and applied cryptography. Currently, my main research focus is on SNARKs and their applications in blockchain.
+Currently, I am a Ph.D. student at the Institute of Information Engineering, University of Chinese Academy of Sciences. My research interests include zero-knowledge proofs, blockchain security, and applied cryptography. My main research focus is on zk-SNARKs and their applications in blockchain technology.
 
 ## Miscellaneous
 
-I used to be obsessed with Genshin Impact and my favorite character is [Yoimiya](https://genshin.hoyoverse.com/en/character/inazuma?char=2). Currently, seems like not so many games can attract me anymore and I am more into programming and reading in my spare time. Still, I play some games occasionally including [Maj-soul](https://www.maj-soul.com/), [Palworld](https://store.steampowered.com/app/1623730/Palworld/), and [Genshin Impact](https://genshin.mihoyo.com/en/).
+Previously, I was enthusiastic about Genshin Impact, and my favorite character is [Yoimiya](https://genshin.hoyoverse.com/en/character/inazuma?char=2). At present, I dedicate more time to programming and reading. Still, I play some games occasionally including [Maj-soul](https://www.maj-soul.com/), [Palworld](https://store.steampowered.com/app/1623730/Palworld/), and [Genshin Impact](https://genshin.mihoyo.com/en/).
 
 <details>
 <summary><b>More about some favorites</b></summary>

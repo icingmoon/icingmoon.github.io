@@ -1006,7 +1006,7 @@ Therefore, the trace of ciphertext $C$ is:
 $$
 \begin{aligned}
 tr(C) &= tr(E_0(m \mathbf{A}) E_k^{-1}) \\
-&=  tr(E_0E_k^{-1} (m \mathbf{A}))
+&=  tr(E_k^{-1} E_0 (m \mathbf{A}))
 \end{aligned}
 $$
 

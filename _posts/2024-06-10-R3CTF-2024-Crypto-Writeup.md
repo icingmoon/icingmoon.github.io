@@ -414,11 +414,11 @@ $$
 
 
 
-### 高斯自同构（Galois Automorphism）
+### Galois 自同构（Galois Automorphism）
 
-注意到 TenSeal 库允许我们选择 `galois_keys`，即允许我们计算高斯自同构（Galois Automorphism）。
+注意到 TenSeal 库允许我们选择 `galois_keys`，即允许我们计算 Galois 自同构（Galois Automorphism）。
 
-高斯自同构是一个环同构，记多项式商环 $\mathcal{A}=\mathbb{Z}[X] /\left(\Phi_m(X)\right)$，其中 $\Phi_m(X)$ 是第 $m$ 个分圆多项式（cyclotomic polynomial），对任意 $j \in \mathbb{Z}_m^*$,  第 $j$ 个 高斯自同构为 $\theta_j$ ：
+Galois 自同构是一个环同构，记多项式商环 $\mathcal{A}=\mathbb{Z}[X] /\left(\Phi_m(X)\right)$，其中 $\Phi_m(X)$ 是第 $m$ 个分圆多项式（cyclotomic polynomial），对任意 $j \in \mathbb{Z}_m^*$,  第 $j$ 个  Galois 自同构为 $\theta_j$ ：
 
 $$
 \begin{aligned}
@@ -427,15 +427,15 @@ f(x) & \longmapsto f\left(x^j\right) \quad(\text { for } f(X) \in \mathbb{Z}[X])
 \end{aligned}
 $$
 
-本题恰好是分圆多项式商环 $Q[x] = GF(p)[x]/(x^{4096} + 1) = \Phi_{8192}(x)$ ，可行的高斯自同构被限制在奇数 $1, 3, 5, \cdots, 4095, \cdots$ 上。（如果允许形如 $f(x^{2i})$ 的映射，这不再是一个环同构，例如 $f(x^{4096}) = f(-1)$ ）
+本题恰好是分圆多项式商环 $Q[x] = GF(p)[x]/(x^{4096} + 1) = \Phi_{8192}(x)$ ，可行的 Galois 自同构被限制在奇数 $1, 3, 5, \cdots, 4095, \cdots$ 上。（如果允许形如 $f(x^{2i})$ 的映射，这不再是一个环同构，例如 $f(x^{4096}) = f(-1)$ ）
 
 对于任意多项式 $f(x) \in Q[x]$ ，因为 BFV 的密文不具可拆分性质，$f(x)$ 只能当作一个整体进行运算，我们可以进行下面三种运算：
 
 - 同态加法：$f(x) + g(x)$ 
 - 同态乘法： $f(x)g(x)$
-- 高斯自同构造：$\theta_i(f) = f(x^i), i =1, 3, 5, \cdots, 4095, \cdots$
+- Galois 自同构：$\theta_i(f) = f(x^i), i =1, 3, 5, \cdots, 4095, \cdots$
 
-容易得到，$x$ 在商环 $Q[x] = GF(p)[x]/(x^{4096} + 1)$ 上的阶为 $4096 * 2 = 8192$ ，因此理论上可行的高斯自同构为 $\theta_1, \theta_3, \cdots, \theta_{8191}$ 。观察到，高斯自同构，实际上就是保持常数项不变，而其他项的系数进行移动的运算。具体来说：
+容易得到，$x$ 在商环 $Q[x] = GF(p)[x]/(x^{4096} + 1)$ 上的阶为 $4096 * 2 = 8192$ ，因此理论上可行的 Galois 自同构为 $\theta_1, \theta_3, \cdots, \theta_{8191}$ 。观察到， Galois 自同构，实际上就是保持常数项不变，而其他项的系数进行移动的运算。具体来说：
 
 $$
 f(x) = a_0 + a_1 x + \cdots a_n x^{n-1} \\
@@ -446,16 +446,16 @@ $$
 由于 $x,x^3,\cdots x^{n-1}, x^{n} = -x, \cdots x^{2n-1} = -x^{n-1} \cdots$ ，所有系数要么直接进行了移动，要么乘以 -1 后进行了移动（$x^i \rightarrow x^{i + \Delta}$），
 
 {: .error}
-**那么有没有可能某些高斯自同构得到的多项式相加后，所有非常数单项式的系数都恰好消去等于 0 呢？或者每个系数 $a_i, \ \forall i \ge 1$ 对应的单项式求和后恰好等于0？** 这样就得到了 $f(x)$ 的常数项。
+**那么有没有可能某些 Galois 自同构得到的多项式相加后，所有非常数单项式的系数都恰好消去等于 0 呢？或者每个系数 $a_i, \ \forall i \ge 1$ 对应的单项式求和后恰好等于0？** 这样就得到了 $f(x)$ 的常数项。
 
 
-记在 $Q[x] = GF(p)[x]/(x^{n} + 1)$  上的高斯自同构群为 $ \mathcal{G_n}:( \\{\theta_j \| \mathcal{GCD}(j, 2n) = 1 \\}, \circ )$ ，群运算 $\circ$ 为映射复合。容易注意到这样一个群同构：
+记在 $Q[x] = GF(p)[x]/(x^{n} + 1)$  上的 Galois 自同构群为 $ \mathcal{G_n}:( \\{\theta_j \| \mathcal{GCD}(j, 2n) = 1 \\}, \circ )$ ，群运算 $\circ$ 为映射复合。容易注意到这样一个群同构：
 
 $$
 \mathcal{G}:(\{\theta_j\}, \circ) \cong \mathbb{Z}_{2n}^{*}
 $$
 
-将 $\mathcal{G_n}$ 的所有元素都作用一遍 $f(x) = a_0 + a_1 x + \cdots a_n x^{n-1}$ ，考虑每个系数 $a_i$ 在每个高斯自同构作用下对应的单项式为序列为
+将 $\mathcal{G_n}$ 的所有元素都作用一遍 $f(x) = a_0 + a_1 x + \cdots a_n x^{n-1}$ ，考虑每个系数 $a_i$ 在每个 Galois 自同构作用下对应的单项式为序列为
 
 $$
 x^{i}, x^{3i}, x^{5i}, \cdots, x^{(2n - 3)i}, x^{(2n -1)i} \tag{Xi}
@@ -475,7 +475,7 @@ S_i(x) &= \sum_j (X_{i})_j \\
 \end{aligned}
 $$
 
-上述证明有一点小问题在于 $x^{2i} - 1$ 在 $x^{n} + 1$ 不一定可逆。证明 $x^{2ni} - 1$ 同时整除 $(x^{2i} - 1)(x^n + 1)$ 即可。因此 $n$ 个高斯自同构作用后的结果等于：
+上述证明有一点小问题在于 $x^{2i} - 1$ 在 $x^{n} + 1$ 不一定可逆。证明 $x^{2ni} - 1$ 同时整除 $(x^{2i} - 1)(x^n + 1)$ 即可。因此 $n$ 个 Galois 自同构作用后的结果等于：
 
 $$
 \begin{aligned}
@@ -500,17 +500,17 @@ $$
 n\theta_0(x) =  \theta_1(f(x)) +  \theta_3(f(x)) + \cdots +   \theta_{2n-1}(f(x))
 $$
 
-回到本题，我们是可以通过同态加法、同态乘法、同态高斯自同构运算组合得到同态系数提取（Sample Extraction）操作的，提取 $x^i$ 单项式系数 $a_i$ 的过程如下：
+回到本题，我们是可以通过同态加法、同态乘法、同态 Galois 自同构运算组合得到同态系数提取（Sample Extraction）操作的，提取 $x^i$ 单项式系数 $a_i$ 的过程如下：
 
 - 旋转（Rotation）：同态乘法乘以 $x^{-i}$ 的密文将目标系数 $a_i$ 旋转到常数项。
-- 高斯自同构（Galois Automorphism）：作用所有的高斯自同构，得到一系列 $F = \{ f(x^i) \| \mathcal{GCD}(i, 2n) = 1 \}$
+- Galois 自同构（Galois Automorphism）：作用所有的 Galois 自同构，得到一系列 $F = \{ f(x^i) \| \mathcal{GCD}(i, 2n) = 1 \}$
 - 系数提取（Sample Extraction）：同态求和 $F$ 集合内的密文，然后乘以 $\varphi(2n)^{-1} \mod p$ ，最终得到系数 $a_i$ 的密文。
 
 
 
 ### 系数提取优化
 
-上面的系数提取需要计算 $\varphi(2n)$ 个高斯自同构，本题 $n = 4096$ ，因此需要计算 $\varphi(8192) = 4096$ 次高斯自同构。并且 BFV 全同态加密的高斯自同构密钥的 size 随着高斯自同构的数量而迅速增大，在使用 TenSeal 进行计算时，一个包含所有 4096 个高斯自同构的 Galois Key 的大小达到了 1 GB。想要做一个简单的系数提取需要这么大的密钥，肯定是不现实的。并且题目也限制了 Galois Key 最多包含 12 个高斯自同构。于是，我们**需要用尽可能少的高斯自同构和尽可能少的同态操作次数，做到系数提取的操作。** 实际上这是 key-size 和同态计算工作量的一个 trade-off。
+上面的系数提取需要计算 $\varphi(2n)$ 个 Galois 自同构，本题 $n = 4096$ ，因此需要计算 $\varphi(8192) = 4096$ 次 Galois 自同构。并且 BFV 全同态加密的 Galois 自同构密钥的 size 随着 Galois 自同构的数量而迅速增大，在使用 TenSeal 进行计算时，一个包含所有 4096 个 Galois 自同构的 Galois Key 的大小达到了 1 GB。想要做一个简单的系数提取需要这么大的密钥，肯定是不现实的。并且题目也限制了 Galois Key 最多包含 12 个 Galois 自同构。于是，我们**需要用尽可能少的 Galois 自同构和尽可能少的同态操作次数，做到系数提取的操作。** 实际上这是 key-size 和同态计算工作量的一个 trade-off。
 
 前面提到过：
 
@@ -518,13 +518,13 @@ $$
 \mathcal{G}:(\{\theta_j\}, \circ) \cong \mathbb{Z}_{2n}^{*}
 $$
 
-于是通过寻找若干个生成元 $\{\theta_i\}$ ，然后通过映射复合，我们就可以生成的高斯自同构群 $\mathcal{G}$ 。生成元选择的素数次数形式的高斯自同构：
+于是通过寻找若干个生成元 $\{\theta_i\}$ ，然后通过映射复合，我们就可以生成的 Galois 自同构群 $\mathcal{G}$ 。生成元选择的素数次数形式的 Galois 自同构：
 
 $$
 j = {3, 5, 7, 11, 13 , \cdots, 8191}
 $$
 
-12 个生成元肯定能生成整个群，由于我们需要找到尽可能短的路径去生成所有的高斯自同构，于是我选择了爆破组合的方式，在生成整个群  $\mathcal{G}$  的同时，生成最短的路径 $\theta = g_1^{e_1}  \circ g_1^{e_2} \cdots \circ g_k^{e_k}, \ \forall \theta \in \mathcal{G}$。具体来说，选择 6 个生成元 $g_s = [3, 5, 7, 11, 13, 17]$ ，设置一个指数的最大值 $E = 6$，即可生成整个群 $\mathcal{G}$，并且映射复合的操作的最大次数为 $6 *6 = 36$ 次。足够通过本题的时间限制。
+12 个生成元肯定能生成整个群，由于我们需要找到尽可能短的路径去生成所有的 Galois 自同构，于是我选择了爆破组合的方式，在生成整个群  $\mathcal{G}$  的同时，生成最短的路径 $\theta = g_1^{e_1}  \circ g_1^{e_2} \cdots \circ g_k^{e_k}, \ \forall \theta \in \mathcal{G}$。具体来说，选择 6 个生成元 $g_s = [3, 5, 7, 11, 13, 17]$ ，设置一个指数的最大值 $E = 6$，即可生成整个群 $\mathcal{G}$，并且映射复合的操作的最大次数为 $6 *6 = 36$ 次。足够通过本题的时间限制。
 
 
 <details class="exploit">
