@@ -1,6 +1,6 @@
 ---
 title: Geekcon CTF 2024 Writeup
-tags: CTF Writeup Cryptography
+tags: CTF Writeup Cryptography ZKP
 published: True
 ---
 
