@@ -322,6 +322,7 @@ where $$G \in \mathbb{Z}_{N}^{k \times n}$$ and $$K_e \in  \mathbb{Z}_{N}^{n}$$ 
 
 <details class="exploit">
 <summary><b>RecoverKey.py</b></summary>
+<div markdown="1">
 
 ```python
 from sage.all import Zmod, matrix, block_matrix, identity_matrix, PolynomialRing, Sequence, ZZ, save, load, prod, vector, codes, GF, crt
