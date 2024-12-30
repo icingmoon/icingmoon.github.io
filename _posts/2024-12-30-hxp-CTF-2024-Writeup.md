@@ -20,7 +20,7 @@ published: true
 **cccircus**: Come on, how much more betterer™ do I have to make CRC for it to become secure?!?? 🎪🐘🦁🔥🤹 [Attachment](/assets/ctf-stuff/2024-hxp/cccircus-b17dbb48e606a93b.tar.xz)
 
 {: .success}
-**cccircus**: Let’s try that again! 🥜🍿🥳 [Attachment](/assets/ctf-stuff/2024-hxp/cccccircus-4cd2b310162153ea.tar.xz)
+**cccccircus**: Let’s try that again! 🥜🍿🥳 [Attachment](/assets/ctf-stuff/2024-hxp/cccccircus-4cd2b310162153ea.tar.xz)
 
 <details class="warning">
 <summary><b>cccccircus_server.py</b></summary>
@@ -119,20 +119,20 @@ $$
 \end{aligned}
 $$
 
-The cccccircus oracle returns the half MSB bits of mac: $\mathcal{T}(m) = (t_{64}, \cdots, t_{127})$. If we expands the power, there will be a numerous annoying monomials. However, by manipulating our message, we can make the padded message `len(msg) || msg`  be zero in $\mathbb{F}_{2^{128}}$, i.e., $m(x) \equiv  0 \mod f(x)$. Denote $m(x) = \ell(x) \cdot x^{8\ell} + m_0(x)$ where $\ell(x)$ is the length polynomial and $m_0(x)$ is message payload polynomial. For fixed length message, we compute $m_0(x) = -\ell(x) \cdot x^{8\ell} \mod f(x)$ and immediately $m(x) = 0$. The returned mac value is:
+The cccccircus oracle returns the half MSB bits of mac: $\mathcal{T}(m) = (t_{64}, \cdots, t_{127})$. If we expands the power, there will be numerous annoying monomials. However, by manipulating our message, we can make the padded message `len(msg) || msg`  be zero in $\mathbb{F}_{2^{128}}$, i.e., $m(x) \equiv  0 \mod f(x)$. Denote $m(x) = \ell(x) \cdot x^{8\ell} + m_0(x)$ where $\ell(x)$ is the length polynomial and $m_0(x)$ is message payload polynomial. For fixed length message, we compute $m_0(x) = -\ell(x) \cdot x^{8\ell} \mod f(x)$ and immediately $m(x) = 0$. The returned mac value is:
 
 $$
 \begin{aligned}
-\textsf{MAC}(k(x), m(x), \ell) &=  (k(x) \cdot x^{8\ell})^{e} \mod f(x) \\
-& = \underbrace{k(x)^{e}}_{K(x)} \cdot \underbrace{x^{8 \cdot e \cdot \ell}}_{L(x)} \mod f(x) \\
+\textsf{MAC}(k(x), m(x), \ell) &=  (k(x) \cdot x^{8(\ell + 1)})^{e} \mod f(x) \\
+& = \underbrace{k(x)^{e}}_{K(x)} \cdot \underbrace{x^{8e(\ell + 1)}}_{L(x)} \mod f(x) \\
 &:= (t_0, t_1, \cdots, t_{127})
 \end{aligned}
 $$
 
 {: .error}
-**The leak bits $\mathcal{T}(m) = (t_{64}, \cdots, t_{127})$ reveals 64 linear equations of the coefficient vector of $K(x) = k(x)^e$ since $h(x) = x^{8e\ell}$ is known.** 
+**The leak bits $\mathcal{T}(m) = (t_{64}, \cdots, t_{127})$ reveal 64 linear equations of the coefficient vector of $K(x) = k(x)^e$ since $L(x) = x^{8e(\ell + 1)}$ is known.** 
 
-Note that every polynomial $g(x)$ can be represented as its accompanying circulant matrix:
+Note that in polynomial multiplication modulo $f(x)$, every polynomial $g(x)$ can be represented as its accompanying circulant matrix:
 
 $$
 \mathbf{M}(g) = 
