@@ -21,17 +21,17 @@ Readers who are not from a mathematical background or cryptographers should be m
 
 ### Definition
 
-<div class="success" markdown="1">**Definition (_Short Weierstrass Curves_)**. Let $\mathbb{F}$ be a finite field of characteristic $q$ with $q>3$. The Short Weierstrass elliptic curve $E\_{a, b}(\mathbb{F})$ over $\mathbb{F}$ in its affine representation is the set of all pairs of field elements $(x, y) \in \mathbb{F} \times \mathbb{F}$ that satisfy the Short Weierstrass cubic equation $y^2=x^3+a \cdot x+b$, together with a distinguished symbol $\mathcal{O}$, called the point at infinity which is also the identity in elliptic curve: 
+<section class="success" markdown="1">**Definition (_Short Weierstrass Curves_)**. Let $\mathbb{F}$ be a finite field of characteristic $q$ with $q>3$. The Short Weierstrass elliptic curve $E\_{a, b}(\mathbb{F})$ over $\mathbb{F}$ in its affine representation is the set of all pairs of field elements $(x, y) \in \mathbb{F} \times \mathbb{F}$ that satisfy the Short Weierstrass cubic equation $y^2=x^3+a \cdot x+b$, together with a distinguished symbol $\mathcal{O}$, called the point at infinity which is also the identity in elliptic curve: 
 
 $$
 \mathbf{E}_{a, b}(\mathbb{F})=\left\{(x, y) \in \mathbb{F} \times \mathbb{F} \mid y^2=x^3+a \cdot x+b\right\} \bigcup\{\mathcal{O}\}
 $$
 
-</div>
+</section>  
 
 
 <p class="error" markdown="1">**Non-singular**. Typically, we require $4 a^3+27 b^2 \ne 0$ (so-called non-singularity) **which loosely means that the curve has no cusps or self-intersections in the geometric sense,** if seen as an actual curve. Cusps and self-intersections would make the group law potentially ambiguous, i.e., the discrete logarithm over singular elliptic curve is trivial and extremely unsecure for cryptography, referring to [this](https://github.com/jvdsn/crypto-attacks/blob/master/attacks/ecc/singular\_curve.py) and [this](https://ieeexplore.ieee.org/document/7426154/). Intuitively, we can think of the group law on a singular curve as degenerating into the addition group of the base finite field, **note that it is an addition group rather than a multiplication group.** The discrete logarithm of the addition group in the base finite field corresponds to the Euclidean division or inversion.
-</p>
+</p> 
 
 
 **Isomorphic affine Short Weierstrass curves**:  Though we have yet not discussing the group law of the elliptic curve, we can classify elliptic curves to decide which pairs of parameters $(a, b)$ and $\left(a^{\prime}, b^{\prime}\right)$ instantiate equivalent curves in the sense that there is a 1:1 correspondence between the set of curve points. Let's see how isomorphic affine short Weierstrass curves can be derived from the underlying curve equations. We know that for isomorphic curves, their curve equation should be algebraically equivalent. For non-zero $c^6$ (we choose degree $6 = lcm(2,3)$ to avoid fraction in the exponent), we can rewrite a new equivalent curve equation as follows:
@@ -56,7 +56,7 @@ $$
 This map is a $1: 1$ correspondence, and its inverse map is given by mapping the point at infinity onto the point at infinity, and mapping each curve point $(x, y)$ onto the curve point $\left(c^{-2} x, c^{-4} y\right)$.
 
 
-<div class="info" markdown="1">
+<section class="info" markdown="1">
 **J-invariant**: As we can see, if $a^{\prime}=a \cdot c^4$ and $b^{\prime}=b \cdot c^6$ hold, it is equivalent to:
 
 $$
@@ -70,7 +70,7 @@ j(\mathbf{E}) = 1728 \frac{4a^3}{4a^3 + 27b^2}.
 $$
 
 It's easy to see that $j(\mathbf{E})$ is determined by the value of $\frac{a^3}{b^2}$ if the edge conditions $a,b=0$ and $4a^3 + 27b^3 = 0$ are not considered. That's why the $j$-invariant can be used to classify elliptic curves.
-</div>
+</section>  
 
 
 ### Group Laws
@@ -79,7 +79,7 @@ Group laws of elliptic curve are all based on so-called chord-and-tangent rule. 
 
 These definitions are quite meaningful geometrically. To ensure the definitions are well-defined, we must also address an algebraic property: ensuring that any line intersects the elliptic curve at no more than three points. Otherwise, the addition law would become ambiguous. Actually, every line implies a linear relationship of $x, y$. To find the intersecting points, we only need to solve a univariate polynomial with at most degree 3 after applying the linear reduction. By the fundamental theorem of finite fields, there are at most $3$ roots for degree-3 univariate polynomial. This shows that our group laws are well-defined.
 
-<div class="success" markdown="1">
+<section class="success" markdown="1">
 **Chord-and-Tangent Group Laws**:
 
 - (**Identity Law**) For point at infinity, $P + \mathcal{O} = P$.
@@ -116,7 +116,7 @@ These definitions are quite meaningful geometrically. To ensure the definitions 
   \end{cases}
   $$
 
-</div>
+</section>  
 
 Alright, all group laws are understandable except that the identity element $\mathcal{O}$. Why do we need to define a point at infinity which does not satisfy the curve equation? Why is a point at infinity the identity element? These questions can be well explained in the following elliptic curve definitions in projective planes.
 
@@ -130,7 +130,7 @@ Projective space provides a better definition of elliptic curves and offers more
 
 A widely known axiom is that two lines either intersect or are parallel. This axiom holds on the ordinary Euclidean plane but does not hold in the projective plane. A projective plane can be thought of as an ordinary plane, but equipped with an additional “point at infinity” such that two different lines always intersect in a single point, i.e., parallel lines intersect “at infinity”. 
 
-<div class="success" markdown="1">
+<section class="success" markdown="1">
 **Definition (_Projective Plane_).** Let $\mathbb{F}$ be a field and $\mathbb{F}^3 := \mathbb{F}\times \mathbb{F} \times \mathbb{F}$. For any point $x = (X, Y, Z)$, there is exactly one line $L\_x$ in $\mathbb{F}^3$ that intersects both $(0,0,0)$ and $x$. All points on the line $L\_x$ are equivalent in the projective plane. A element (point) in the projective plane over $\mathbb{F}$ can then be defined as such a line if we exclude the intersection of that line with $(0,0,0)$. This leads to the following definition of a point in projective geometry:
 
 $$
@@ -143,7 +143,7 @@ $$
 \mathbb{F} \mathbb{P}^2:=\left\{[X: Y: Z] \mid(X, Y, Z) \in \mathbb{F}^3 \text { with }(X, Y, Z) \neq(0,0,0)\right\}
 $$
 
-</div>
+</section>  
 
 The equivalent element in projective plane can be normalized in a unified representation. Typically, we normalize the third dimension into 1 (if $Z$ is not zero) and thus the elements of projective plane can be classified as follows:
 
@@ -174,7 +174,7 @@ $$
 
 The projective Weierstrass curve contains points which are not in the original Weierstrass curve: $[X:Y:0]$ and this is exactly the point at infinity. Note that for $Z =0$, we have $X =0$ from the projective curve equation. After normalization, the point at infinity is unique: $[0:1:0]$ and one can often see this point in sagemath by calling `E.zero()`. For other points, we can normalize $Z$ into 1 and the first two coordinates of $[X:Y:1]$ is the original point of the affine Weierstrass curve $\mathbf{E}\_{a, b}(\mathbb{F})$. 
 
-<div class="warning" markdown="1">
+<section class="warning" markdown="1">
 The group isomorphism of projective and affine Weierstrass curves are given by:
 
 $$
@@ -186,7 +186,7 @@ I: \mathbf{E}(\mathbb{F}) \rightarrow \mathbf{E}\left(\mathbb{F P}^2\right):
 I^{-1}: \mathbf{E} \left(\mathbb{F P}^2\right) \rightarrow \mathbf{E} (\mathbb{F}):[X: Y: Z] \mapsto \begin{cases}\left(\frac{X}{Z}, \frac{Y}{Z}\right) & \text { if } Z \neq 0 \\ \mathcal{O} & \text { if } Z=0\end{cases}
 $$
 
-</div>
+</section>  
 
 Now we turn to the key advantage of projective coordinates. The following text is taken from moon-math book:
 
@@ -196,7 +196,7 @@ The groups law in the affine Weierstrass curve $\mathbf{E}\_{a, b}(\mathbb{F})$ 
 
 <details class="info">
 <summary><b>projective_law.py</b></summary>
-<div markdown="1">
+<section markdown="1">
 
 ``` python
 def add_points(P, Q, a, b, p):
@@ -249,7 +249,7 @@ def add_points(P, Q, a, b, p):
         return (X3 % p, Y3 % p, Z3 % p)
 ```
 
-</div>
+</section>  
 </details>
 
 ## ZK-Friendly Elliptic Curves
@@ -258,14 +258,14 @@ In this section, we focus on a subset of elliptic curves on which faster algorit
 
 ### Montgomery Curve
 
-<div class="success" markdown="1">
+<section class="success" markdown="1">
 **Definition (_Montgomery Curve_).** A Montgomery elliptic curve $\mathbf{M}(\mathbb{F})$ over $\mathbb{F}$ in its affine representation is the set of all pairs of field elements $(x, y) \in \mathbb{F} \times \mathbb{F}$ that satisfy the Montgomery cubic equation $B \cdot y^2=x^3+A \cdot x^2+x$, together with a distinguished symbol $\mathcal{O}$, called the point at infinity.
 
 $$
 \mathbf{M}_{A, B}(\mathbb{F})=\left\{(x, y) \in \mathbb{F} \times \mathbb{F} \mid B \cdot y^2=x^3+A \cdot x^2+x\right\} \bigcup\{\mathcal{O}\}
 $$
 
-</div>
+</section>  
 
 The Montgomery curves can always be isomorphic to Weierstrass curves. However, a Weierstrass curve can be isomorphic to a Montgomery curve if and only if the following conditions hold:
 - Order of the Weierstrass curve is divisible by 4: $\mid \mathbf{E}(\mathbb{F}) \mid = 4k$.
@@ -274,7 +274,7 @@ The Montgomery curves can always be isomorphic to Weierstrass curves. However, a
 
 Using above remarks, we have the following isomorphisms:
 
-<div class="warning" markdown="1">
+<section class="warning" markdown="1">
 **Mappings between Montgomery curve and Weierstrass curve.**
 
 - Isomorphism from Montgomery curve to Weierstrass curve：
@@ -305,11 +305,11 @@ Using above remarks, we have the following isomorphisms:
   \end{aligned}
   $$
 
-</div>
+</section>  
 
 &nbsp;
 
-<div class="info" markdown="1">
+<section class="info" markdown="1">
 **Montgomery Group Law**
 
 - (**Tangent Law**) Let $P = (x, y) \in \mathbf{M}\_{A, B}(\mathbb{F})$ with $y \ne 0$, compute the slope of tangent line 
@@ -342,14 +342,14 @@ Using above remarks, we have the following isomorphisms:
   \end{cases}
   $$
 
-</div>
+</section>  
 
 
 ### Twisted Edwards Curves
 
 > Paper: [Twisted Edwards Curves](https://eprint.iacr.org/2008/013.pdf).
 
-<div class="success" markdown="1">
+<section class="success" markdown="1">
 **Definition (_Twisted Edwards Curves_).** A twisted Edwards curve $\mathbf{T}(\mathbb{F})$ over $\mathbb{F}$ in its affine representation is the set of all pairs of field elements $(x, y) \in \mathbb{F} \times \mathbb{F}$ that satisfy the twisted Edwards equation $a x^2 + y^2 = 1 + dx^2 y^2$ for non-zero and distinctive $a, d \in \mathbb{F}^*$.
 
 $$
@@ -357,11 +357,11 @@ $$
 $$
 
 **Note**: A Twisted Edwards curve is called a ZK-friendly Twisted Edwards curve if the parameter a is a quadratic residue and the parameter d is a quadratic non-residue. **We does not need a special symbol to represent the point at infinity.**
-</div>
+</section>  
 
 &nbsp;
 
-<div class="warning" markdown="1">
+<section class="warning" markdown="1">
 **Mappings between Montgomery curve and twisted Edwards curve.**
 
 - Isomorphism from twisted Edwards curve to Montgomery curve (birationally equivalent)：
@@ -393,7 +393,7 @@ $$
   \end{aligned}
   $$
 
-</div>
+</section>  
 
 
 Notes:
@@ -415,14 +415,14 @@ Notes:
 
   If $\frac{4}{a-d}$ is quadratic residue, we can always rescale $B = 1$ by letting $s = (\sqrt{\frac{4}{a-d}})^{-1}$.
 
-<div class="info" markdown="1">
+<section class="info" markdown="1">
 **Twisted Edwards Group Law.** In twisted Edwards curve, we have the simplest group law without extra definition of identity or annoying branching. Given two points $(x\_1, y\_1)$ and $(x\_2, y\_2)$, the sum of them is given by:
 
 $$
 (x_1, y_1) + (x_2, y_2) = (\frac{x_1y_2 + y_1x_2}{1 + dx_1x_2y_1y_2}, \frac{y_1y_2 - ax_1x_2}{1-dx_1x_2y_1y_2}).
 $$
 
-</div>
+</section>  
 
 We can see that the point $(0,1)$ lies on $\mathbf{T}\_{a, d}(\mathbb{F})$ and serves as the identity element.
 
