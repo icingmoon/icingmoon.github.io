@@ -119,7 +119,7 @@ $$
 \end{aligned}
 $$
 
-The cccccircus oracle returns the half MSB bits of mac: $\mathcal{T}(m) = (t_{64}, \cdots, t_{127})$. If we expands the power, there will be numerous annoying monomials. However, by manipulating our message, we can make the padded message `len(msg) || msg`  be zero in $\mathbb{F}_{2^{128}}$, i.e., $m(x) \equiv  0 \mod f(x)$. Denote $m(x) = \ell(x) \cdot x^{8\ell} + m_0(x)$ where $\ell(x)$ is the length polynomial and $m_0(x)$ is message payload polynomial. For fixed length message, we compute $m_0(x) = -\ell(x) \cdot x^{8\ell} \mod f(x)$ and immediately $m(x) = 0$. The returned mac value is:
+The cccccircus oracle returns the half MSB bits of mac: $\mathcal{T}(m) = (t_{64}, \cdots, t_{127})$. If we expand the power, there will be numerous annoying monomials. However, by manipulating our message, we can make the padded message `len(msg) || msg`  be zero in $\mathbb{F}_{2^{128}}$, i.e., $m(x) \equiv  0 \mod f(x)$. Denote $m(x) = \ell(x) \cdot x^{8\ell} + m_0(x)$ where $\ell(x)$ is the length polynomial and $m_0(x)$ is message payload polynomial. For fixed length message, we compute $m_0(x) = -\ell(x) \cdot x^{8\ell} \mod f(x)$ and immediately $m(x) = 0$. The returned mac value is:
 
 $$
 \begin{aligned}
@@ -292,7 +292,7 @@ $$
 d := d_{1}2^{504} + d_0 = d_12^{504} + \underbrace{a \cdot 2^{252} + b}_{d_0}
 $$
 
-The distribution of errors in $a$ and $b$ is probably 3, 4 or 4, 3. Let $c = 2^e \mod n$. From $c^d = 1$, we obtain:
+The distribution of errors in $a$ and $b$ is probably 3, 4 or 4, 3. Let $c = 2^e \mod n$. From $c^d = 2$, we obtain:
 
 $$
 \begin{aligned}
@@ -301,7 +301,7 @@ c^{ d_1 \cdot 2^{504} + a \cdot 2^{252} + b} &= 2 \\
 \end{aligned}
 $$
 
-The left-hand side is known and we bruteforce the candidates of $a, b$ in a meet-in-the-middle way:
+The right-hand side is known and we bruteforce the candidates of $a, b$ in a meet-in-the-middle way:
 
 - Enumerate $b$, compute table containing all possible values of $2 \cdot c^{-d_1 \cdot 2^{504}} \cdot c^{-b}$.
 - Enumerate $a$, compute $(c^{2^{252}})^a$ and check if there is a collision in the aforementioned table. Once we find a collision, we can retrieve $a, b$ and correct the error bits.
