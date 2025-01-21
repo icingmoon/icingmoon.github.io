@@ -17,7 +17,7 @@ published: true
 
 ## Short Weierstrass Curves
 
-Readers who are not from a mathematical background or cryptographers should be most familiar with this form of elliptic curve, as it provides the simplest and most intuitive algebraic representation of elliptic curves. 
+Readers who are not from a mathematical background should be most familiar with this form of elliptic curve, as it provides the simplest and most intuitive algebraic representation of elliptic curves. 
 
 ### Definition
 
@@ -63,7 +63,7 @@ $$
 (\frac{a^\prime}{a})^3 = (\frac{b^\prime}{b})^2
 $$
 
-Let's define $j := \frac{a^3}{b^2}$. If such a invariant is the same for two different curves, they are isomorphic affine short Weierstrass curves. The standard $j$-invariant indicating the equivalence/isomorphism of curve $ \mathbf{E}\_{a, b}(\mathbb{F})$ is:
+Let's define $j := \frac{a^3}{b^2}$. If such an invariant is the same for two different curves, they are isomorphic affine short Weierstrass curves. The standard $j$-invariant indicating the equivalence/isomorphism of curve $ \mathbf{E}\_{a, b}(\mathbb{F})$ is:
 
 $$
 j(\mathbf{E}) = 1728 \frac{4a^3}{4a^3 + 27b^2}.
@@ -192,7 +192,7 @@ Now we turn to the key advantage of projective coordinates. The following text i
 
 > One of the key features of projective coordinates is that, in projective space, it is guaranteed that any chord will always intersect the curve in three points, and any tangent will intersect it in two points. So, the geometric picture simplifies, as we don’t need to consider external symbols and associated cases. The price to pay for this mathematical simplification is that projective coordinates might be less intuitive for beginners.
 
-The groups law in the affine Weierstrass curve $\mathbf{E}\_{a, b}(\mathbb{F})$ requires computing multiplicative inversion of finite field in each addition. However, in projective Weierstrass curve, there are only multiplication and addition arithmetic. Only when we need to normalize the $Z$-coordinate, we have to compute one multiplicative inversion. In detail,  the inverse element of $[X:Y:Z]$ is given by $[X:-Y:Z]$ and the full addition law (a similar chord-and-tangent rule) is given by the following algorithm.
+The group laws in the affine Weierstrass curve $\mathbf{E}\_{a, b}(\mathbb{F})$ require computing multiplicative inversion of finite field in each addition. However, in projective Weierstrass curve, there are only multiplication and addition arithmetic. Only when we need to normalize the $Z$-coordinate, we have to compute one multiplicative inversion. In detail,  the inverse element of $[X:Y:Z]$ is given by $[X:-Y:Z]$ and the full addition law (a similar chord-and-tangent rule) is given by the following algorithm.
 
 <details class="info">
 <summary><b>projective_law.py</b></summary>
@@ -356,7 +356,7 @@ $$
 \mathbf{T}_{a,d}(\mathbb{F})=\left\{(x, y) \in \mathbb{F} \times \mathbb{F} \mid a x^2 + y^2 = 1 + dx^2 y^2\right\}
 $$
 
-**Note**: A Twisted Edwards curve is called a ZK-friendly Twisted Edwards curve if the parameter a is a quadratic residue and the parameter d is a quadratic non-residue. **We does not need a special symbol to represent the point at infinity.**
+**Note**: A Twisted Edwards curve is called a ZK-friendly Twisted Edwards curve if the parameter $a$ is a quadratic residue and the parameter $d$ is a quadratic non-residue. **We does not need a special symbol to represent the point at infinity.**
 </section>  
 
 &nbsp;
@@ -435,6 +435,6 @@ Proving computation with branching is expensive in state-of-the-art zero-knowled
 ## End
 
 - There are actually many other forms of elliptic curves which are not covered in this blog, such as Hessian curves, Jacobi quartic curves, etc. One can refer to [Explicit-Formulas Database](https://www.hyperelliptic.org/EFD/) for more details. There are even techniques to implement the addition law of elliptic curves based on single coordinate, such as the constant-time x-coordinate ladder: [The Brier–Joye ladder](https://link.springer.com/chapter/10.1007/3-540-45664-3_24).
-- We does not discuss the security of elliptic curves in this blog. I found this site: [safecurves](https://safecurves.cr.yp.to/) and this repository [Known Attacks On Elliptic Curve Cryptography](https://github.com/elikaski/ECC_Attacks) to be a good resource for learning the security of elliptic curves.
+- We do not discuss the security of elliptic curves in this blog. I find this site: [safecurves](https://safecurves.cr.yp.to/) and this repository [Known Attacks On Elliptic Curve Cryptography](https://github.com/elikaski/ECC_Attacks) to be a good resource for learning the security of elliptic curves.
 
 ---
