@@ -1,5 +1,5 @@
 ---
-tags: Elliptic-Curve ECC
+tags: ECC Projective-Plane Isomorphism
 title: Elliptic Curves, Group Laws and Isomorphisms
 published: true
 ---

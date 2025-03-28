@@ -45,6 +45,37 @@ Currently, I am a Ph.D. student at the Institute of Information Engineering, Uni
 
 Previously, I was enthusiastic about Genshin Impact, and my favorite character is [Yoimiya](https://genshin.hoyoverse.com/en/character/inazuma?char=2). At present, I dedicate more time to programming and travelling. Still, I play some games occasionally including [Maj-soul](https://www.maj-soul.com/), [Palworld](https://store.steampowered.com/app/1623730/Palworld/), and [Genshin Impact](https://genshin.mihoyo.com/en/).
 
+<details>
+<summary><b>More about some favorites</b></summary>
+<ul>
+  <li>
+    Songs recently falling into: <a href="https://www.youtube.com/watch?v=-h_yBTriuaY">24/7,365</a>
+    <br>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/-h_yBTriuaY?si=HjH467Vbo16TiH-J" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </li>
+  <li>
+    Favorite Band: <a href="https://www.coldplay.com/">Coldplay</a>
+    <br>
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/igG7kfjTvVQ?si=gP4JbqTCRqZUNAdb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </li>
+  <li>
+    Favorite Male Singer: <a href="https://www.youtube.com/channel/UCYrPdQonkZ4sTE7_u14zVjg">Jay Chou</a>
+    <br>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/C12-p5eXPEw?si=QzjKCXGD6Pu7j3en" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/IoCoIxkGkVw?si=vPnvDN1xdl0VNaVr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+  </li>
+  <li>
+    Favorite Female Singer: <a href="https://www.taylorswift.com/">Taylor Swift</a>
+    <br>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/HecuCs2qVlY?si=3GvX3GC5lqc6kYZX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/cMPEd8m79Hw?si=ZVJAwmO8tVkl8qjL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+  </li>
+  <li>
+    Favorite Movies: <a href="https://www.imdb.com/title/tt0046250/">Roman Holiday</a> by William Wyler, <a href="https://www.imdb.com/title/tt0146271/">April Story</a> by Shunji Iwai, <a href="https://www.imdb.com/title/tt0120731/">The Legend of 1900</a> by Giuseppe Tornatore...
+  </li>
+</ul>
+</details>
+
 ## Friends & Links
 
 Friends' and some awesome blogs I follow.
