@@ -203,8 +203,12 @@
     }
   }
   table {
-    display: block;
-    width: 100%;
+    // center the table
+    margin: 0 auto;
+    // also center the text in the table
+    text-align: center;
+    // width: 100%;
+    width: auto;
     border-collapse: collapse;
     @include overflow(auto);
     thead, tfoot {

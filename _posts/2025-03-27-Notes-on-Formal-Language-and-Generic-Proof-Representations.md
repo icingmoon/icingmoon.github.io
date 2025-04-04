@@ -21,7 +21,7 @@ Notes on chapter 6 of [moon-math book](https://github.com/LeastAuthority/moonmat
 
 ## Formal Language and Proof
 
-Before diving into zero-knowledge proofs, it is essential to formally deconstruct the core meaning of the term "proof." In traditional mathematical proofs, the process involves starting from a set of axioms and applying rigorous logical deductions to reach the desired conclusion. However, the setting of zero-knowledge proofs differs from the proof of mathematical theorems in cryptography which typically involves statements such as "claim A is true" or the knowledge of a secret string that belongs to a formal language.
+Before diving into zero-knowledge proofs, it is essential to formally deconstruct the core meaning of the term "proof." In traditional mathematical proofs, the process involves starting from a set of axioms and applying rigorous logical deductions to reach the desired conclusion. However, the setting of zero-knowledge proofs in cryptography differs from the proof of mathematical theorems, which typically involves statements such as "claim A is true" or the knowledge of a secret string that belongs to a formal language.
 
 ### Formal Language
 
@@ -183,7 +183,7 @@ Solving the systems of quadratic equations is generally NP-hard. Given an instan
 - Every algebraic circuit defines an associated R1CS and (may) also provides an efficient way to compute solutions $I$ with a given witness $W$ for that R1CS.
 - Every R1CS can be expressed as an algebraic circuit. This can be achieved by defining temporary variables for every multiplication/addiction operation in the R1CS.
 
-For more details about algebraic circuits and their relation to R1CS, one can refer to [Ben-Sasson et al. 2013](https://eprint.iacr.org/2013/507) and chapters 6,7 of [moon-math book](https://github.com/LeastAuthority/moonmath-manual). A formal proof of algebraic circuits taken from the moon-math book is given below:
+For more details about algebraic circuits and their relation to R1CS, one can refer to [Ben-Sasson et al. 2013](https://eprint.iacr.org/2013/507) and chapters 6,7 of [moon-math book](https://github.com/LeastAuthority/moonmath-manual). A formal definition of algebraic circuits taken from the moon-math book is given below:
 
 <section class="info" markdown="1">
 **Definition (*Algebraic Circuits*)**. Let $\mathbb{F}$ be a field. An algebraic circuit is a directed acyclic (multi-)graph that computes a polynomial function over $\mathbb{F}$. Nodes with only outgoing edges (source nodes) represent the variables and constants of the function and nodes with only incoming edges (sink nodes) represent the outcome of the function. All other nodes have exactly two incoming edges and represent the field operations addition as well as multiplication. Graph edges are directed and represent the flow of the computation along the nodes.
