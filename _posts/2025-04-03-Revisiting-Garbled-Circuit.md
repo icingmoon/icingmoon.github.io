@@ -5,8 +5,7 @@ published: true
 ---
 
 {: .info}
-**tl;dr:** This blog will introduce the naive Yao's garbled circuit and state-of-the-art gate optimizations in [BMR16](https://eprint.iacr.org/2016/969). We then focus the security of garbled circuit under malicious OT receiver. This blog also serves as a detailed writeup of DiceCTF 2025 NIL-CIRC. Besides, technique details about the fancy-garbling library (implementation of BMR16 are also discussed.
-
+**tl;dr:** This blog will introduce the naive Yao's garbled circuit and state-of-the-art gate optimizations in fancy-garbling library(implementation of [BMR16](https://eprint.iacr.org/2016/969)). This blog also serves as a detailed writeup of DiceCTF 2025 NIL-CIRC.
 
 <!--more-->
 
