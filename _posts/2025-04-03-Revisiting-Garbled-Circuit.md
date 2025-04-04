@@ -5,14 +5,14 @@ published: true
 ---
 
 {: .info}
-**tl;dr:** This blog will introduce the naive Yao's garbled circuit and state-of-the-art gate optimizations in fancy-garbling library(implementation of [BMR16](https://eprint.iacr.org/2016/969)). This blog also serves as a detailed writeup of DiceCTF 2025 NIL-CIRC.
+**tl;dr:** This blog will introduce the naive Yao's garbled circuit and state-of-the-art gate optimizations in fancy-garbling library (implementation of [BMR16](https://eprint.iacr.org/2016/969)). This blog also serves as a detailed writeup of DiceCTF 2025 NIL-CIRC.
 
 <!--more-->
 
 
 ---
 
-The writeup of DiceCTF 2025 involves only section [elementary-optimizations](#elementary-optimizations) and section [free-xor-offset-leak-attack](#free-xor-offset-leak). Readers familiar with the garbled circuit can skip to the final [section](#free-xor-offset-leak). For those who are not familiar with free-XOR techniques, reading the section [elementary-optimizations](#elementary-optimizations) is enough to understand the final attack. For those who are interested in the half-gate technique of fancy-garbling library, reading section [half-gate-technique](#half-gate-technique) is recommended. The solver can be found in [DiceCTF/nic-cir](https://github.com/tl2cents/CTF-Writeups/tree/master/2025/DiceCTF/nic-cir).
+The writeup of DiceCTF 2025 involves only section [elementary-optimizations](#elementary-optimizations) and section [free-xor-offset-leak-attack](#free-xor-offset-leak). Readers familiar with the garbled circuit can skip to the final [section](#free-xor-offset-leak). For those who are not familiar with free-XOR techniques, reading the section [elementary-optimizations](#elementary-optimizations) is enough to understand the final attack. For those who are interested in the half-gate technique of fancy-garbling library, reading section [half-gate-technique](#half-gate-technique) is recommended. The solver can be found my [ctf-writeups](https://github.com/tl2cents/CTF-Writeups/tree/master/2025/DiceCTF/nic-cir).
 
 
 ## Garbled Circuit
@@ -89,7 +89,7 @@ Now, we can see that with only the input wires and the garbled circuit $\mathcal
 
 ### A Demo of Garbled Circuit 
 
-In DiceCTF 2021, there is challenge [garbled](https://github.com/dicegang/dicectf-2021-challenges/tree/master/crypto/garbled) (writeup can be found [here](https://ctftime.org/writeup/25974)) about the naive implementation of Yao's garbled circuit. I use the challenge codes to illustrate the steps of garbled circuit protocol. The demo codes can be found in [github](https://github.com/tl2cents/CTF-Writeups/tree/master/2025/DiceCTF/nic-cir/demo).
+In DiceCTF 2021, there is challenge [garbled](https://github.com/dicegang/dicectf-2021-challenges/tree/master/crypto/garbled) (writeup can be found [here](https://ctftime.org/writeup/25974)) about the naive implementation of Yao's garbled circuit. I use the challenge codes to illustrate the steps of garbled circuit protocol. The demo codes can be found in my [ctf-writeups](https://github.com/tl2cents/CTF-Writeups/tree/master/2025/DiceCTF/nic-cir/demo).
 
 
 <section class="success" markdown="1">
@@ -509,7 +509,7 @@ In challenge [NIL-CIRC](https://github.com/defund/ctf/tree/master/dicectf-quals-
 
 - Run the Chou-Orlandi OT protocol with an malicious receiver. This can leak the global offset $\Delta$ of free-XOR which allows us to recover all the wire label pairs in the garbled circuit.
 - Use the unbalanced AND gate to recover the bit semantics of wire label pairs. 
-- Construct linear equations to recover the private key bits based the bit semantics of wire labels.
+- Construct linear equations to recover the private key bits based on the bit semantics of wire labels.
 
 ### Chou-Orlandi OT protocol
 
@@ -532,7 +532,7 @@ The sender has two secrets $m_0, m_1$. Let $G$ be the public generator on curve-
   $$
   
   Save $k_b = \mathcal{H}(i,  r \cdot Y)$ where $i$ is a counter for performing batch OT protocols and send $R$ to the sender.
-
+ 
 - The server computes two one-time keys:
   
   $$
@@ -562,26 +562,26 @@ The sender has two secrets $m_0, m_1$. Let $G$ be the public generator on curve-
   \end{cases}
   $$
   
-  The receiver retrieve his message $m_b$ as follows:
+  The receiver retrieves his message $m_b$ as follows:
   
   $$
   m_b = c_b \oplus k_b
   $$
 </section>
 
-This is a perfect phase to run an malicious OT receiver attack to recover the global offset $\Delta$ of free-XOR. The idea to make:
+This is a perfect phase to run a malicious OT receiver attack to recover the global offset $\Delta$ of free-XOR. The idea to make:
 
 $$
-k_0 = k_1 \implies yR = y Y - yR  \implies R = \frac{1}{2}Y
+k_0 = k_1 \implies yR = y Y - yR  \implies R = \frac{1}{2}Y.
 $$
 
-When receiving input wire label $W_i^{b}$ in garbled circuit, the malicious receiver can recover:
+When receiving any input wire label $W_i^{b}$, the malicious receiver can recover:
 
 $$
 \Delta = c_0 \oplus c_1 = m_0 \oplus m_1 = W_{i}^0 \oplus W_{i}^{1}.
 $$
 
-For all other OT protocols, the malicious receiver runs honestly. With $\Delta$ and free-XOR technique, the attacker can recover both labels for each wire.
+For all other OT protocols, the malicious receiver runs honestly. With $\Delta$ and free-XOR, the attacker can recover both labels for each wire.
 
 ### Recovering Private Inputs
 
@@ -627,11 +627,10 @@ impl<C: AbstractChannel> CustomAND for Evaluator<C, WireMod2> {
         } else if outs[1] == outs[2] && outs[1] == outs[3] {
             return Ok((outs[0], true, true, true));
         }
-        // If we got here, we have a wrong label or a wrong gate, or a wrong delta
+        // If we get here, we have a wrong label or a wrong gate, or a wrong delta
         return Ok((outs[0], false, false, false));
-        // Ok(self.evaluate_and_gate(A, B, &gate0, &gate1))
     }
 }
 ```
 
-Then we export all known bits of the wires into a file and solve linear equations to recover key bits in sagemath. In my local test, we can recover 124 key bits and brute force 4 bits to decrypt the flag. Exploiting codes can be found in [DiceCTF/nic-cir](https://github.com/tl2cents/CTF-Writeups/tree/master/2025/DiceCTF/nic-cir).
+Then we export all known bits of the wires into a file and solve linear equations to recover key bits in sagemath. In my local test, we can recover 124 key bits and brute force 4 bits to decrypt the flag. Exploiting codes can be found in my [ctf-writeups](https://github.com/tl2cents/CTF-Writeups/tree/master/2025/DiceCTF/nic-cir).
