@@ -280,7 +280,7 @@ In Yao's garbled circuit, every fan-in-k gate needs $2^k$ ciphertexts to encrypt
 <section class="info" markdown="1">
 **Point-and-Permute [BMR90](https://dl.acm.org/doi/10.1145/100216.100287)**
 
-A random "color bit" is appended to each wire label, so that the pair labels $(W_i^{0}, W_i^1)$ for wire $i$ have opposite color bits, i.e., $\mathcal{LSB}(W_i^0) = b, \mathcal{LSB}(W_i^1) = 1-b$. The color bit $b$ is randomly assigned and thus we can arrange the 4 ciphertexts according to color bits of the input wire labels (i.e., the first ciphertext should be the one that uses two keys having both 0 color bits, regardless of what truth value they represent). In this case, the evaluator need only decrypt one ciphertext — the one indicated by the color bits of the input wire labels.
+A random "color bit" is appended to each wire label, so that the pair labels $(W_i^{0}, W_i^1)$ for wire $i$ have opposite color bits, i.e., $\mathcal{LSB}(W_i^0) = b, \mathcal{LSB}(W_i^1) = 1-b$. The color bit $b$ is randomly assigned and thus we can arrange the 4 ciphertexts according to color bits of the input wire labels (i.e., the first ciphertext should be the one that uses two keys having both 0 color bits, regardless of what truth value they represent). In this case, the evaluator decrypts only one ciphertext — the one indicated by the color bits of the input wire labels.
 
 </section>
 
@@ -295,7 +295,7 @@ $$
 E_{k_1, k_2}(m) = \mathcal{H}(g, k_1 \mid\mid k_2) \oplus m
 $$
 
-where $\mathcal{H}$ is a random oracle. When garbling a gate $G(W_a, W_b)= W_c$, we can choose the two outputs $W_c^0, W_k^1$ labels such that the first ciphertext is zero. Assume that first gate ciphertext is (we treat the superscript of the wires as a color bit here):
+where $\mathcal{H}$ is a random oracle and $g$ is the index of gate. When garbling a gate $G(W_a, W_b)= W_c$, we can choose the two outputs $W_c^0, W_k^1$ labels such that the first ciphertext is zero. Assume that first gate ciphertext is (we treat the superscript of the wires as a color bit here):
 
 $$
 E_{W_a^0, W_b^0}(W_c^0) = \mathcal{H}(g, W_a^0 \mid\mid W_b^0) \oplus W_c^0.
@@ -309,13 +309,13 @@ We then assign $W_c^0 = \mathcal{H}(g, W_a^0 \mid\mid W_b^0) $ and only three ci
 <section class="info" markdown="1">
 **Free-XOR [KS08](https://www.cs.toronto.edu/~vlad/papers/XOR_ICALP08.pdf)**
 
-The free-XOR optimization has the highest practical impact on garbled circuit, which makes the XOR gate be free of cost. In free XOR, the garbler will generate a global secret value $\Delta \in \{0,1 \}^{\lambda}$ and the wire labels are chosen such that $W_i^{0} \oplus W_i^1 = \Delta$. This can be rewritten as $W_i^{x} = W_i^{0} \oplus (x\Delta)$ and for an XOR gate $G(W_a, W_b)= W_c$, we have:
+The free-XOR optimization has the highest practical impact on garbled circuit, which makes the XOR gate free of cost. In free XOR, the garbler generates a global secret value $\Delta \in \{0,1 \}^{\lambda}$ and the wire labels are chosen such that $W_i^{0} \oplus W_i^1 = \Delta$. This can be rewritten as $W_i^{x} = W_i^{0} \oplus (x\Delta)$. For an XOR gate $G(W_a, W_b)= W_c$, we have:
 
 $$
 W_a^x \oplus W_b^y = (W_a^0 \oplus W_b^0) \oplus (x \oplus y) \Delta
 $$
 
-We assign $W_c^0 = W_a^0 \oplus W_b^0$ as the 'false' wire label and simply XORing two input wire labels of XOR gate that encodes $a, b$ results in the output wire label encoding $c = a \oplus b$. As a consequence, garbled XOR gate can be evaluated without any cryptographic operations by the evaluator or any garbled-gate information in the garbled circuit. Note that by choosing $\mathcal{LSB}(\Delta) = 1$ (or other definition of the color bit), the free-XOR technique is compatible of point-and-permute and row-reduction techniques, which results in 3 ciphertexts per AND gate and 0 per XOR.
+We assign $W_c^0 = W_a^0 \oplus W_b^0$ as the 'false' wire label and simply XORing two input wire labels of XOR gate that encodes $a, b$ results in the output wire label encoding $c = a \oplus b$. As a consequence, garbled XOR gate can be evaluated without any cryptographic operations by the evaluator or any garbled-gate ciphertexts. Note that by choosing $\mathcal{LSB}(\Delta) = 1$ (or other definition of the color bit), the free-XOR technique is compatible of point-and-permute and row-reduction techniques, which results in 3 ciphertexts per AND gate and 0 per XOR.
 </section>
 &nbsp;
 
@@ -389,11 +389,11 @@ $$
 This shows that we can correctly evaluate the half gate. Again, we can remove the first ciphertext using garbled row-reduction. We choose $C = \mathcal{H}(S)$ so that the first ciphertext becomes all-zeroes and is not sent to the evaluator.
 </section>
 
-Now, two halves make a whole ADD gate. We denote $C_{G}, C_{E}$ as the generator's and evaluator's half gates, respectively. Intuitively, we can XOR the two ciphertexts of half gates to obtain the ciphertexts of the original AND gate. 
+Now, two halves make a whole ADD gate. We denote $C_{G}, C_{E}$ as the outputs of generator's and evaluator's half gates, respectively. Intuitively, we can XOR the two ciphertexts of half gates to obtain the ciphertexts of the original AND gate. 
 
 ### Two Halves = One Whole
 
-Let the AND gate's input labels be $W_a^{0}, W_a^{1}, W_b^{0}, W_b^{1}$ and output labels $W_{c}^0, W_{c}^1$. Let $W_{G_c}, W_{G_e}$ be the output labels of generator's and evaluator's half-gates. The global offset value for free-XOR is $\Delta$, i.e., $W_{i}^{0} \oplus W_{i}^{1} = \Delta$ for all $i$. Denote the color bits of $W_a^{0}, W_a^{1}$ as $p_a$ and $p_b$ respectively.
+Let the AND gate's input labels be $W_a^{0}, W_a^{1}, W_b^{0}, W_b^{1}$ and output labels $W_{c}^0, W_{c}^1$. Let $W_{G_c}, W_{G_e}$ be the output labels of generator's and evaluator's half-gates. The global offset value for free-XOR is $\Delta$, i.e., $W_{i}^{0} \oplus W_{i}^{1} = \Delta$ for all $i$. Denote the color bits of $W_a^{0}, W_b^{0}$ as $p_a$ and $p_b$ respectively.
 
 
 <section class="success" markdown="1">
@@ -406,7 +406,7 @@ $$
 \end{cases}
 $$
 
-After row-reduction and permutation (according color bits $p_a, 1 \oplus p_a$, we assume $p_a$ = 0 here for simplicity), the generator assigns
+After row-reduction and permutation according to color bits $p_a, 1 \oplus p_a$, (we assume $p_a$ = 0 here for simplicity), the generator assigns
 
 $$
 W_{G_c}^0 := \mathcal{H}(W_a^0)
