@@ -218,9 +218,7 @@ We need to pass a CMAC check to submit a 1024-bit RSA public key $n$ and also a 
 
 <img src="/assets/ctf-stuff/2025-downunder/image-20250720165934785.png" referrerpolicy="no-referrer" alt="and-gate" style="display: block; margin-left: auto; margin-right: auto;">
 
-CMAC is also the same with CBC mode except that it derives extra two keys $K_1, K_2$ for the last block and only preserves the last ciphertext block as its MAC. With the key, we can easily forge a message given a known CMAC value, i.e., fix the iv be zero block and the last ciphertext be the target MAC and reverse the CBC mode.
-
-With the key, we can easily forge a message given a known CMAC value. We can randomize the values of the intermediate CBC blocks so that we can get many 1024-bit numbers that can pass the CMAC check. Then just bruteforce until we get a prime 1024-bit number and submit it as the public key. We can easily sign the challenge string since the RSA modulus is prime in this case.
+CMAC operates similarly to CBC-MAC, with the distinction that it derives two additional subkeys, $K_1$ and $K_2$, to handle the final block, and it outputs only the last ciphertext block as the MAC tag. Given knowledge of the secret key, forging a valid message-tag pair becomes straightforward. Specifically, one can set the IV to a zero block, choose the desired MAC value as the final ciphertext block, and then reverse the CBC process to construct a message that authenticates to the target MAC. Possessing the key also enables controlled generation of many valid CMAC-tagged messages. By manipulating the intermediate CBC blocks, one can generate a large number of valid 1024-bit candidate values that satisfy the CMAC verification process. Among these, it is feasible to brute-force until a prime 1024-bit number is found, which can then be submitted as a valid RSA public key. Since this 'public key' corresponds to a prime modulus rather than a standard RSA composite modulus, signing the challenge string becomes trivial.
 
 ### Exploit
 
@@ -319,7 +317,7 @@ k_0, \ldots, k_{91} \ge 0 \\
 \end{cases}
 $$
 
-where $B$ is a small bound slightly greater than $64$. We can also bound the product to remove $\textsf{MSB}_{64}(\cdot)$. To make sure that the target value is small than $n$, we shift $h_t$ by $s = 4096 - 64 - 8$. Then find small coefficients $k_i$ such that:
+where $B$ is a small bound slightly greater than $64$. We can also bound the product to remove $\textsf{MSB}_{64}(\cdot)$. To make sure that the target value is smaller than $n$, we shift $h_t$ by $s = 4096 - 64 - 8$. Then find small coefficients $k_i$ such that:
 
 $$
 (h_t \ll s) \le \prod_{i=0}^{91} h_{i}^{k_i} < ((h_t + 1) \ll s)
@@ -513,7 +511,7 @@ $$
 c_i = a_i \cdot s + \beta_i - k_i n \implies a_i s \in (c_i + k_i n - n, c_i + k_i n].
 $$
 
-In the $i+1$-th round:
+In the $(i+1)$-th round:
 
 $$
 c_{i+1} = a_{i+1} \cdot s + \beta_{i+1} - k_{i+1} n
@@ -534,7 +532,7 @@ k_{i+1} > \frac{2^{\ell}a_i \cdot s - c_{i+1}}{n} > \frac{2^{\ell}(c_i + k_i n -
 \end{cases}
 $$
 
-where the length of the new interval $\Delta = ub_{i} - lb_{i} =  2^{\ell} + 1$. Then solve a discrete logarithm instance to recover $s_{i+1}$.  Finally,  after solving the five discrete logarithms, we can use the public key $S = [s]G$ to recover the remaining bits.
+where the length of the new interval $\Delta = ub_{i} - lb_{i} =  2^{\ell} + 1$. Solve a discrete logarithm instance to recover $k_{i+1}$. Finally, after solving the five discrete logarithms, we can use the public key $S = [s]G$ to recover the remaining bits.
 </section>
 
 ### Exploit
