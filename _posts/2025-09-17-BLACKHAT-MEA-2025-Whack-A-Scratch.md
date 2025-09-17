@@ -89,7 +89,20 @@ $$
 
 Since $\det (M_2) = \det(M_3) \implies \det(R_0) \det(T_1) = \det(T_0) \det(S_1)$, we can use this equation to determine the correct value of $j$ and also the four matrices defined in equation (M).
 
+<section class="success" markdown="1">
+**Remarks**
 
+A natural question is whether $A, B$, and $C$ can be fully recovered from the above matrix. This problem appears to be related to solving multivariate quadratic equations, which is known to be NP-hard. It's easy to see that:
+
+$$
+A^2 \cdot M_1^{-1} \cdot M_4 = X^T \cdot A^T \cdot A \cdot X.
+$$
+
+where $X := R_0 \cdot S_0 ^ {-1} = A^{-1} \cdot B^T$. 
+
+Solving above matrix equation is equal to solving a multivariate quadratic system with $36$ variables and $36$ equations. This seems infeasible.
+
+</section>
 
 ## Recover diagonal values $s_i$
 
