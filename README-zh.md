@@ -53,6 +53,44 @@ TeXt 使用 [Tomorrow](https://github.com/chriskempson/tomorrow-theme) 作为它
 | --- |  --- | --- | --- |  --- |
 | ![Tomorrow](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow.png) | ![Tomorrow Night](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night.png) | ![Tomorrow Night Eighties](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night-eighties.png) | ![Tomorrow Night Blue](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night-blue.png) | ![Tomorrow Night Bright](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night-bright.png) |
 
+## 双语支持
+
+本主题现在支持双语文章（例如：英文和中文）。
+
+### 如何使用
+
+1.  为文章**创建两个 Markdown 文件**（每种语言一个）。
+2.  在两个文件的 Front Matter 中**添加一个唯一的 `key`**。这将它们链接在一起。
+3.  为每篇文章**设置 `lang`**（`en`，`zh` 等）。
+4.  为**主版本**（你想在列表中显示的版本）**设置 `bilingual: true`**。
+5.  为**翻译版本**（你想在列表中隐藏的版本）**设置 `hidden: true`**。
+
+### 示例
+
+**主版本 (例如 `_posts/2025-12-25-hello.md`):**
+```yaml
+---
+layout: article
+title: "Hello World"
+key: hello-world-2025
+bilingual: true
+lang: en
+---
+```
+
+**翻译版本 (例如 `_posts/2025-12-25-hello-cn.md`):**
+```yaml
+---
+layout: article
+title: "你好，世界"
+key: hello-world-2025
+lang: zh
+hidden: true
+---
+```
+
+*此功能由 **Copilot + Gemini 3 Pro** 生成。*
+
 ## 文档
 
 ### 开始

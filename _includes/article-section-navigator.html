@@ -31,7 +31,26 @@
 
 {%- else -%}
   {%- assign _previous = page.previous -%}
+  {%- for i in (1..100) -%}
+    {%- if _previous == nil -%}{%- break -%}{%- endif -%}
+    {%- if _previous.hidden != true -%}
+      {%- if page.key == nil or _previous.key != page.key -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endif -%}
+    {%- assign _previous = _previous.previous -%}
+  {%- endfor -%}
+
   {%- assign _next = page.next -%}
+  {%- for i in (1..100) -%}
+    {%- if _next == nil -%}{%- break -%}{%- endif -%}
+    {%- if _next.hidden != true -%}
+      {%- if page.key == nil or _next.key != page.key -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endif -%}
+    {%- assign _next = _next.next -%}
+  {%- endfor -%}
 {%- endif -%}
 
 {%- if _next or _previous -%}

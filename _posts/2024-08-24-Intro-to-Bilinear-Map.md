@@ -1,7 +1,9 @@
 ---
 tags: Pairing-Based-Cryptography MOV-Attack DDH IBE 
 title: Intro to Bilinear Map
-published: true
+key: intro-to-bilinear-map
+bilingual: true
+lang: zh
 ---
 
 {: .info}

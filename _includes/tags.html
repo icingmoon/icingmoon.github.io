@@ -18,12 +18,23 @@
 <div class="site-tags js-tags">
   <ul class="menu">
     <li>
+      {%- assign _site_posts_size = 0 -%}
+      {%- for _post in site.posts -%}
+        {%- unless _post.hidden -%}
+          {%- assign _site_posts_size = _site_posts_size | plus: 1 -%}
+        {%- endunless -%}
+      {%- endfor -%}
       <button type="button" class="button button--secondary button--pill tag-button tag-button--all" data-encode="">
-        Show All<div class="tag-button__count">{{ site.posts | size }}</div>
+        Show All<div class="tag-button__count">{{ _site_posts_size }}</div>
       </button>
     </li>
     {%- for _tag in _tags -%}
-      {%- assign _tag_cur_size = _tag[1].size -%}
+      {%- assign _tag_cur_size = 0 -%}
+      {%- for _post in _tag[1] -%}
+        {%- unless _post.hidden -%}
+          {%- assign _tag_cur_size = _tag_cur_size | plus: 1 -%}
+        {%- endunless -%}
+      {%- endfor -%}
       {%- assign _tag_min_1 = _tag_min_size -%}
       {%- assign _tag_max_1 = _tag_min_1 | plus: _tag_gap_size -%}
       {%- assign _tag_min_2 = _tag_max_1 -%}
@@ -44,7 +55,7 @@
         {%- assign _c_index = 4 -%}
       {%- endif -%}
       <li><button type="button" class="button button--pill tag-button tag-button-{{ _c_index }}" data-encode="{{ _tag[0] | strip | url_encode }}">
-          <span>{{ _tag[0] | strip }}</span><div class="tag-button__count">{{ _tag[1].size }}</div>
+          <span>{{ _tag[0] | strip }}</span><div class="tag-button__count">{{ _tag_cur_size }}</div>
         </button>
       </li>
     {%- endfor -%}

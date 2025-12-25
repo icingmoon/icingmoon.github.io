@@ -1,0 +1,58 @@
+{%- if page.key -%}
+  {%- assign _translations = site.posts | where: "key", page.key | sort: 'lang' -%}
+  {%- if _translations.size > 1 -%}
+    <div class="article__lang-switch d-print-none" style="
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      margin: 1rem 0 2rem; 
+      gap: 1rem;">
+      
+      {%- for _t in _translations -%}
+        {%- if _t.lang == 'en' -%}
+          {%- assign _lang_label = 'English' -%}
+        {%- elsif _t.lang == 'zh' -%}
+          {%- assign _lang_label = '中文' -%}
+        {%- else -%}
+          {%- assign _lang_label = _t.lang | default: site.lang | default: "Default" | upcase -%}
+        {%- endif -%}
+
+        {%- if _t.url == page.url -%}
+          <span style="
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            background-color: #4a4a4a;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            cursor: default;
+            border: 1px solid #4a4a4a;
+            transform: translateY(-1px);
+          ">
+            {{ _lang_label }}
+          </span>
+        {%- else -%}
+          <a href="{{ _t.url | relative_url }}" style="
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            background-color: #fff;
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            border: 1px solid #e0e0e0;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+          " onmouseover="this.style.borderColor='#666';this.style.color='#333';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)'" onmouseout="this.style.borderColor='#e0e0e0';this.style.color='#666';this.style.transform='translateY(0)';this.style.boxShadow='0 2px 5px rgba(0,0,0,0.05)'">
+            {{ _lang_label }}
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+{%- endif -%}

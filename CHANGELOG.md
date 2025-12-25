@@ -1,5 +1,17 @@
 # Change Log
 
+## 2.3.0 (2025-12-25)
+
+### Enhancements
+
+- **Bilingual Support**: Added support for bilingual posts with language toggles.
+    - Linked posts via `key` front matter.
+    - Language switcher in article header.
+    - Bilingual indicator in article lists.
+    - Filter hidden translations from lists and archives.
+    - Correct tag counting for hidden posts.
+    - Smart previous/next navigation skipping hidden translations.
+
 ## 2.2.6 (2019-02-02)
 
 ### Enhancements
