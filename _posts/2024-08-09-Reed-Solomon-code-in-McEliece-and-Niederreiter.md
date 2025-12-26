@@ -1,7 +1,9 @@
 ---
 tags: Code-Based-Cryptography Reed-Solomon-Code Sidelnikov-Shestakov-Attack
 title: Reed-Solomon code in McEliece and Niederreiter
-published: true
+key: rs-mceliece-niederreiter
+lang: zh
+bilingual: true
 ---
 
 {: .info}
