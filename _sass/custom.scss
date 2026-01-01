@@ -219,7 +219,7 @@
     }
 
     &.code_block { 
-      @include details-code-variant($text-color); 
+      @include details-code-variant($yellow); 
       
       &.success { @include details-code-variant($green); }
       &.info { @include details-code-variant($blue); }
@@ -401,7 +401,7 @@
   }
 
   .code_block:not(details) {
-    @include code-block-variant("neutral-block");
+    @include code-block-variant("warning-block");
 
     &.success { @include code-block-variant("success-block"); }
     &.info { @include code-block-variant("info-block"); }
