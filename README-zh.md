@@ -147,6 +147,63 @@ hidden: true
 - **样式**: `_sass/custom.scss` (定义颜色、图标和动画)
 - **插件**: `_plugins/custom_blocks.rb` (实现 Liquid 标签)
 
+## 增强代码块
+
+本主题现在支持增强的代码块，包括复制按钮、自定义样式和折叠功能。
+
+### 特性
+
+- **一键复制**: 自动添加到所有代码块，支持中英文反馈。
+- **样式**: `success` (绿色), `info` (蓝色), `warning` (黄色), `error` (红色)。
+- **特殊类型**: `example` (绿色), `exploit` (蓝色)。
+- **可折叠**: 默认隐藏长代码块。
+
+### 使用方法
+
+#### 1. 原生 Markdown 语法
+
+你可以在代码块后使用 Kramdown 属性 `{: ... }`。
+
+**带标题:**
+
+````markdown
+```python
+print("Hello")
+```
+{: title="main.py" }
+````
+
+**可折叠 (默认隐藏):**
+
+````markdown
+```javascript
+// 隐藏的代码
+```
+{: fold="true" title="hidden.js" }
+````
+
+**带样式:**
+
+````markdown
+```bash
+rm -rf /
+```
+{: type="error" title="危险命令" }
+````
+
+#### 2. Liquid 标签语法
+
+对于更复杂的场景，可以使用 `{% code_block %}` 标签。
+
+```liquid
+{% code_block example fold title="我的示例" %}
+```python
+def example():
+    pass
+```
+{% endcode_block %}
+```
+
 *此功能由 **Copilot + Gemini 3 Pro** 生成。*
 
 ## 文档

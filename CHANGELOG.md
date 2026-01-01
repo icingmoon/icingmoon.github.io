@@ -17,6 +17,12 @@
     - Collapsible support via `fold` option.
     - Simplified Liquid tag syntax (e.g., `{% theorem %}`).
     - Bilingual title support (English/Chinese).
+- **Enhanced Code Blocks**: Improved code block functionality.
+    - **One-click Copy**: Added a copy button to all code blocks with bilingual feedback (English/Chinese).
+    - **Multi-style Support**: Added `success`, `info`, `warning`, `error`, `example`, `exploit` styles.
+    - **Collapsible Code**: Native code blocks can now be collapsible via `{: fold="true" }`.
+    - **Custom Titles**: Support for custom titles via `{: title="filename.py" }`.
+    - **Liquid Tag Support**: New `{% code_block %}` tag for advanced usage.
 
 ## 2.2.6 (2019-02-02)
 

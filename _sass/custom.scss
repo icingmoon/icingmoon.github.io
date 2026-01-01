@@ -153,6 +153,82 @@
     &.theorem { @include details-variant("Theorem", "定理", $red); }
     &.proposition { @include details-variant("Proposition", "命题", $blue); }
     &.lemma { @include details-variant("Lemma", "引理", $blue); }
+    &.example { @include details-variant("Example", "示例", $green); }
+    &.solution { @include details-variant("Solution", "解答", $yellow); }
+    @mixin details-code-variant($color) {
+      border: 1px solid $color;
+      border-left: 4px solid $color;
+      border-radius: map-get($base, border-radius);
+      background-color: rgba($color, .1);
+      padding: 0 map-get($spacers, 3);
+
+      summary {
+        margin: 0 -#{map-get($spacers, 3)};
+        padding: map-get($spacers, 2) map-get($spacers, 3);
+        padding-left: 2rem;
+        font-weight: map-get($base, font-weight-bold);
+        cursor: pointer;
+        position: relative;
+        list-style: none;
+
+        &::-webkit-details-marker {
+          display: none;
+        }
+
+        &::before {
+          content: "\f101";
+          font-family: "Font Awesome 5 Free";
+          font-weight: 900;
+          font-size: 1.1em;
+          color: $color;
+          position: absolute;
+          left: map-get($spacers, 2);
+          top: 50%;
+          transform: translateY(-50%);
+          transition: transform .2s;
+          width: 1em;
+          text-align: center;
+        }
+
+        // 默认不显示标题
+        &::after {
+          content: "Code"; // 默认标题，如果没有 data-title
+        }
+
+        &[data-title]::after {
+          content: attr(data-title);
+        }
+      }
+
+      &[open] {
+        padding-bottom: map-get($spacers, 2);
+
+        summary::before {
+          transform: translateY(-50%) rotate(90deg);
+        }
+      }
+      
+      // 移除中文特定前缀
+      &:lang(zh) summary::after {
+        content: "代码";
+      }
+      
+      &:lang(zh) summary[data-title]::after {
+        content: attr(data-title);
+      }
+    }
+
+    &.code_block { 
+      @include details-code-variant($text-color); 
+      
+      &.success { @include details-code-variant($green); }
+      &.info { @include details-code-variant($blue); }
+      &.warning { @include details-code-variant($yellow); }
+      &.error { @include details-code-variant($red); }
+
+      &.example { @include details-code-variant($green); }
+      &.exploit { @include details-code-variant($blue); }
+    }
   }
 
   .success-block {
@@ -199,6 +275,19 @@
     margin: map-get($spacers, 3) 0;
     background-color: rgba($red, .1);
     border-left: 4px solid $red;
+    border-radius: map-get($base, border-radius);
+
+    .block-title {
+      font-weight: map-get($base, font-weight-bold);
+      margin-bottom: map-get($spacers, 1);
+    }
+  }
+
+  .neutral-block {
+    padding: map-get($spacers, 2) map-get($spacers, 3);
+    margin: map-get($spacers, 3) 0;
+    background-color: rgba($text-color, .05);
+    border-left: 4px solid $text-color;
     border-radius: map-get($base, border-radius);
 
     .block-title {
@@ -283,6 +372,79 @@
 
   .lemma:not(details) {
     @include block-variant("lemma", "Lemma", "引理", "info-block");
+  }
+
+  .example:not(details) {
+    @include block-variant("example", "Example", "示例", "success-block");
+  }
+
+  .solution:not(details) {
+    @include block-variant("solution", "Solution", "解答", "warning-block");
+  }
+
+  @mixin code-block-variant($parent-class) {
+    @extend .#{$parent-class};
+    
+    // 默认不显示标题前缀
+    &::before {
+      content: none;
+      display: none;
+    }
+
+    // 只有当有 data-title 时才显示标题
+    &[data-title]::before {
+      content: attr(data-title);
+      font-weight: map-get($base, font-weight-bold);
+      display: block;
+      margin-bottom: map-get($spacers, 1);
+    }
+  }
+
+  .code_block:not(details) {
+    @include code-block-variant("neutral-block");
+
+    &.success { @include code-block-variant("success-block"); }
+    &.info { @include code-block-variant("info-block"); }
+    &.warning { @include code-block-variant("warning-block"); }
+    &.error { @include code-block-variant("error-block"); }
+    
+    &.example { @include code-block-variant("success-block"); }
+    &.exploit { @include code-block-variant("info-block"); }
+  }
+}
+
+// Copy Code Button
+.highlighter-rouge {
+  position: relative;
+
+  &:hover .copy-code-button {
+    opacity: 1;
+  }
+}
+
+.copy-code-button {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  padding: .25rem .5rem;
+  font-size: .75rem;
+  color: $text-color-3;
+  background-color: $main-color-3;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity .2s ease-in-out, background-color .2s;
+  z-index: 10;
+
+  &:hover {
+    background-color: darken($main-color-3, 5%);
+  }
+
+  &.copied {
+    background-color: $green;
+    color: #fff;
+    border-color: $green;
   }
 }
 

@@ -13,6 +13,10 @@ module Jekyll
       fold = @markup.include?('fold')
       inline = @markup.include?('inline')
       
+      # Parse type/style arguments
+      types = %w(success info warning error example exploit)
+      active_types = types.select { |t| @markup.include?(t) }
+      
       title = nil
       if @markup =~ /title=(["'])(.*?)\1/
         title = $2
@@ -21,9 +25,10 @@ module Jekyll
       # Construct HTML
       if fold
         summary_attr = title ? " data-title=\"#{title}\"" : ""
-        "<details class=\"#{@block_name}\" markdown=\"1\">\n<summary#{summary_attr}></summary>\n#{text}\n</details>"
+        classes = [@block_name] + active_types
+        "<details class=\"#{classes.join(' ')}\" markdown=\"1\">\n<summary#{summary_attr}></summary>\n#{text}\n</details>"
       else
-        classes = [@block_name]
+        classes = [@block_name] + active_types
         classes << "inline" if inline
         class_attr = " class=\"#{classes.join(' ')}\""
         
@@ -36,6 +41,6 @@ module Jekyll
 end
 
 # Register tags
-%w(proof theorem lemma proposition note remark).each do |tag|
+%w(proof theorem lemma proposition note remark example solution code_block).each do |tag|
   Liquid::Template.register_tag(tag, Jekyll::CustomBlock)
 end
