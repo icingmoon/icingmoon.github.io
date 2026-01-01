@@ -83,98 +83,207 @@
       }
     }
 
+    @mixin details-variant($en-title, $zh-title, $color) {
+      border: 1px solid $color;
+      border-left: 4px solid $color;
+      border-radius: map-get($base, border-radius);
+      background-color: rgba($color, .1);
+      padding: 0 map-get($spacers, 3);
+
+      summary {
+        margin: 0 -#{map-get($spacers, 3)};
+        padding: map-get($spacers, 2) map-get($spacers, 3);
+        padding-left: 2rem; // 增加左内边距以容纳图标
+        font-weight: map-get($base, font-weight-bold);
+        cursor: pointer;
+        position: relative;
+        list-style: none; // 隐藏默认标记
+
+        &::-webkit-details-marker {
+          display: none;
+        }
+
+        // 图标
+        &::before {
+          content: "\f101"; // fa-angle-double-right
+          font-family: "Font Awesome 5 Free";
+          font-weight: 900;
+          font-size: 1.1em;
+          color: $color; // 图标颜色与 block 颜色一致
+          position: absolute;
+          left: map-get($spacers, 2);
+          top: 50%;
+          transform: translateY(-50%);
+          transition: transform .2s;
+          width: 1em;
+          text-align: center;
+        }
+
+        // 标题
+        &::after {
+          content: $en-title;
+        }
+
+        &[data-title]::after {
+          content: $en-title " (" attr(data-title) ")";
+        }
+      }
+
+      &[open] {
+        padding-bottom: map-get($spacers, 2);
+
+        summary::before {
+          transform: translateY(-50%) rotate(90deg);
+        }
+      }
+
+      // 中文标题适配
+      &:lang(zh) summary::after {
+        content: $zh-title;
+      }
+
+      &:lang(zh) summary[data-title]::after {
+        content: $zh-title " (" attr(data-title) ")";
+      }
+    }
+
+    &.proof { @include details-variant("Proof", "证明", $yellow); }
+    &.note { @include details-variant("Note", "注意", $blue); }
+    &.remark { @include details-variant("Remark", "注记", $green); }
+    &.theorem { @include details-variant("Theorem", "定理", $red); }
+    &.proposition { @include details-variant("Proposition", "命题", $blue); }
+    &.lemma { @include details-variant("Lemma", "引理", $blue); }
   }
 
-  // p {
-  //   &.error {
-  //     background-color: rgba($red, .1);
-  //     border: 1px solid $red;
-  //     border-radius: map-get($base, border-radius);
-  //     padding: map-get($spacers, 2) map-get($spacers, 3);
-  //   }
+  .success-block {
+    padding: map-get($spacers, 2) map-get($spacers, 3);
+    margin: map-get($spacers, 3) 0;
+    background-color: rgba($green, .1);
+    border-left: 4px solid $green;
+    border-radius: map-get($base, border-radius);
 
-  //   &.warning {
-  //     background-color: rgba($yellow, .1);
-  //     border: 1px solid $yellow;
-  //     border-radius: map-get($base, border-radius);
-  //     padding: map-get($spacers, 2) map-get($spacers, 3);
-  //   }
+    .block-title {
+      font-weight: map-get($base, font-weight-bold);
+      margin-bottom: map-get($spacers, 1);
+    }
+  }
 
-  //   &.info {
-  //     background-color: rgba($blue, .1);
-  //     border: 1px solid $blue;
-  //     border-radius: map-get($base, border-radius);
-  //     padding: map-get($spacers, 2) map-get($spacers, 3);
-  //   }
+  .info-block {
+    padding: map-get($spacers, 2) map-get($spacers, 3);
+    margin: map-get($spacers, 3) 0;
+    background-color: rgba($blue, .1);
+    border-left: 4px solid $blue;
+    border-radius: map-get($base, border-radius);
 
-  //   &.success {
-  //     background-color: rgba($green, .1);
-  //     border: 1px solid $green;
-  //     border-radius: map-get($base, border-radius);
-  //     padding: map-get($spacers, 2) map-get($spacers, 3);
-  //   }
-  // }
+    .block-title {
+      font-weight: map-get($base, font-weight-bold);
+      margin-bottom: map-get($spacers, 1);
+    }
+  }
 
-  // div {
-  //   &.error {
-  //     background-color: rgba($red, .1);
-  //     border: 1px solid $red;
-  //     border-radius: map-get($base, border-radius);
-  //     padding: map-get($spacers, 2) map-get($spacers, 3);
-  //   }
+  .warning-block {
+    padding: map-get($spacers, 2) map-get($spacers, 3);
+    margin: map-get($spacers, 3) 0;
+    background-color: rgba($yellow, .1);
+    border-left: 4px solid $yellow;
+    border-radius: map-get($base, border-radius);
 
-  //   &.warning {
-  //     background-color: rgba($yellow, .1);
-  //     border: 1px solid $yellow;
-  //     border-radius: map-get($base, border-radius);
-  //     padding: map-get($spacers, 2) map-get($spacers, 3);
-  //   }
+    .block-title {
+      font-weight: map-get($base, font-weight-bold);
+      margin-bottom: map-get($spacers, 1);
+    }
+  }
 
-  //   &.info {
-  //     background-color: rgba($blue, .1);
-  //     border: 1px solid $blue;
-  //     border-radius: map-get($base, border-radius);
-  //     padding: map-get($spacers, 2) map-get($spacers, 3);
-  //   }
+  .error-block {
+    padding: map-get($spacers, 2) map-get($spacers, 3);
+    margin: map-get($spacers, 3) 0;
+    background-color: rgba($red, .1);
+    border-left: 4px solid $red;
+    border-radius: map-get($base, border-radius);
 
-  //   &.success {
-  //     background-color: rgba($green, .1);
-  //     border: 1px solid $green;
-  //     border-radius: map-get($base, border-radius);
-  //     padding: map-get($spacers, 2) map-get($spacers, 3);
-  //   }
-  // }
+    .block-title {
+      font-weight: map-get($base, font-weight-bold);
+      margin-bottom: map-get($spacers, 1);
+    }
+  }
 
-  // section {
-  //   &.error {
-  //     background-color: rgba($red, .1);
-  //     border: 1px solid $red;
-  //     border-radius: map-get($base, border-radius);
-  //     padding: map-get($spacers, 2) map-get($spacers, 3);
-  //   }
+  // Predefined blocks: Proof, Remark, Note, Theorem, Proposition, Lemma
+  // Usage: <div class="proof" markdown="1">...</div>
+  // Inline title: <div class="proof inline" markdown="1">...</div>
+  // Custom title: <div class="proof" data-title="My Proof" markdown="1">...</div>
 
-  //   &.warning {
-  //     background-color: rgba($yellow, .1);
-  //     border: 1px solid $yellow;
-  //     border-radius: map-get($base, border-radius);
-  //     padding: map-get($spacers, 2) map-get($spacers, 3);
-  //   }
+  @mixin block-variant($name, $en-title, $zh-title, $parent-class) {
+    @extend .#{$parent-class};
+    
+    &::before {
+      content: $en-title;
+      font-weight: map-get($base, font-weight-bold);
+      display: block;
+      margin-bottom: map-get($spacers, 1);
+    }
 
-  //   &.info {
-  //     background-color: rgba($blue, .1);
-  //     border: 1px solid $blue;
-  //     border-radius: map-get($base, border-radius);
-  //     padding: map-get($spacers, 2) map-get($spacers, 3);
-  //   }
+    &:lang(zh)::before {
+      content: $zh-title;
+    }
 
-  //   &.success {
-  //     background-color: rgba($green, .1);
-  //     border: 1px solid $green;
-  //     border-radius: map-get($base, border-radius);
-  //     padding: map-get($spacers, 2) map-get($spacers, 3);
-  //   }
-  // }
+    &[data-title]::before {
+      content: $en-title " (" attr(data-title) ")";
+    }
 
+    &:lang(zh)[data-title]::before {
+      content: $zh-title " (" attr(data-title) ")";
+    }
+
+    &.inline {
+      &::before {
+        content: $en-title ".";
+        display: inline;
+        float: left;
+        margin-right: map-get($spacers, 2);
+        margin-bottom: 0;
+      }
+
+      &:lang(zh)::before {
+        content: $zh-title ".";
+      }
+
+      &[data-title]::before {
+        content: $en-title " (" attr(data-title) ").";
+      }
+
+      &:lang(zh)[data-title]::before {
+        content: $zh-title " (" attr(data-title) ").";
+      }
+
+      & > :first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .proof:not(details) {
+    @include block-variant("proof", "Proof", "证明", "warning-block");
+  }
+
+  .remark:not(details) {
+    @include block-variant("remark", "Remark", "注记", "success-block");
+  }
+
+  .note:not(details) {
+    @include block-variant("note", "Note", "注意", "info-block");
+  }
+
+  .theorem:not(details) {
+    @include block-variant("theorem", "Theorem", "定理", "error-block");
+  }
+
+  .proposition:not(details) {
+    @include block-variant("proposition", "Proposition", "命题", "info-block");
+  }
+
+  .lemma:not(details) {
+    @include block-variant("lemma", "Lemma", "引理", "info-block");
+  }
 }
 
 /* end custom scss snippet */

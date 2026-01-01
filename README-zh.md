@@ -89,6 +89,64 @@ hidden: true
 ---
 ```
 
+## 自定义数学块
+
+本主题包含专为数学和学术内容设计的样式，具有独特的颜色、图标和折叠功能。
+
+### 支持类型
+
+- **Theorem** (定理 - 红色)
+- **Lemma** (引理 - 蓝色)
+- **Proposition** (命题 - 绿色)
+- **Proof** (证明 - 灰色，默认可折叠)
+- **Remark** (备注 - 黄色)
+- **Note** (注意 - 橙色)
+
+### 使用方法
+
+你可以使用简化的 Liquid 标签语法来生成这些块。
+
+#### 基本块
+
+```liquid
+{% theorem %}
+这是一个定理。
+{% endtheorem %}
+```
+
+#### 自定义标题
+
+```liquid
+{% lemma title="我的自定义引理" %}
+这是一个带有自定义标题的引理。
+{% endlemma %}
+```
+
+#### 可折叠块
+
+添加 `fold` 参数使块可折叠。
+
+```liquid
+{% proof fold %}
+这个证明默认是隐藏的。点击展开。
+{% endproof %}
+```
+
+#### 行内样式
+
+添加 `inline` 参数以获得更紧凑的外观（标题与内容在同一行）。
+
+```liquid
+{% note inline %}
+这是一个快速提示。
+{% endnote %}
+```
+
+### 源码位置
+
+- **样式**: `_sass/custom.scss` (定义颜色、图标和动画)
+- **插件**: `_plugins/custom_blocks.rb` (实现 Liquid 标签)
+
 *此功能由 **Copilot + Gemini 3 Pro** 生成。*
 
 ## 文档

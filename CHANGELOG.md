@@ -11,6 +11,12 @@
     - Filter hidden translations from lists and archives.
     - Correct tag counting for hidden posts.
     - Smart previous/next navigation skipping hidden translations.
+- **Custom Math/Multi-line Blocks**: Added specialized block styles for mathematical content.
+    - Supported types: `theorem`, `lemma`, `proposition`, `proof`, `remark`, `note`.
+    - Distinct color coding and icons for each type.
+    - Collapsible support via `fold` option.
+    - Simplified Liquid tag syntax (e.g., `{% theorem %}`).
+    - Bilingual title support (English/Chinese).
 
 ## 2.2.6 (2019-02-02)
 
