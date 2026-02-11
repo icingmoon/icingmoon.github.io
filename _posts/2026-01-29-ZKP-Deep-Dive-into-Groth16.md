@@ -1,5 +1,5 @@
 ---
-tags:
+tags: ZKP Groth16
 title: "ZK-SNARK: Deep Dive into Groth16"
 published: true
 ---
