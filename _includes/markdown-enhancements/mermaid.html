@@ -2,9 +2,31 @@
 {%- assign _sources = __return -%}
 <script>
   window.Lazyload.js('{{ _sources.mermaid }}', function() {
-    mermaid.initialize({
-      startOnLoad: true
+    // Correctly process Jekyll Rouge output for Mermaid
+    var mermaidElements = document.querySelectorAll('.language-mermaid');
+    var nodes = [];
+    
+    mermaidElements.forEach(function(el) {
+        var codeEl = el.querySelector('code');
+        var mermaidCode = (codeEl || el).textContent;
+        
+        var div = document.createElement('div');
+        div.className = 'mermaid';
+        div.textContent = mermaidCode;
+        
+        el.parentNode.replaceChild(div, el);
+        nodes.push(div);
     });
-    mermaid.init(undefined, '.language-mermaid');
+
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: 'default'
+    });
+    
+    if (typeof mermaid.run === 'function') {
+        mermaid.run({ nodes: nodes });
+    } else {
+        mermaid.init(undefined, nodes);
+    }
   });
 </script>

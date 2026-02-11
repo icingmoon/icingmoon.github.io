@@ -41,6 +41,6 @@ module Jekyll
 end
 
 # Register tags
-%w(proof theorem lemma proposition note remark example solution code_block).each do |tag|
+%w(proof theorem lemma proposition note remark example solution definition code_block plain).each do |tag|
   Liquid::Template.register_tag(tag, Jekyll::CustomBlock)
 end

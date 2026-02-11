@@ -153,8 +153,68 @@
     &.theorem { @include details-variant("Theorem", "定理", $red); }
     &.proposition { @include details-variant("Proposition", "命题", $blue); }
     &.lemma { @include details-variant("Lemma", "引理", $blue); }
+    &.definition { @include details-variant("Definition", "定义", $blue); }
     &.example { @include details-variant("Example", "示例", $green); }
     &.solution { @include details-variant("Solution", "解答", $yellow); }
+
+    @mixin details-plain-variant($color) {
+      border: 1px solid $color;
+      border-left: 4px solid $color;
+      border-radius: map-get($base, border-radius);
+      background-color: rgba($color, .05);
+      padding: 0 map-get($spacers, 3);
+
+      summary {
+        margin: 0 -#{map-get($spacers, 3)};
+        padding: map-get($spacers, 2) map-get($spacers, 3);
+        padding-left: 2rem;
+        font-weight: map-get($base, font-weight-bold);
+        cursor: pointer;
+        position: relative;
+        list-style: none;
+
+        &::-webkit-details-marker {
+          display: none;
+        }
+
+        &::before {
+          content: "\f101";
+          font-family: "Font Awesome 5 Free";
+          font-weight: 900;
+          font-size: 1.1em;
+          color: $color;
+          position: absolute;
+          left: map-get($spacers, 2);
+          top: 50%;
+          transform: translateY(-50%);
+          transition: transform .2s;
+          width: 1em;
+          text-align: center;
+        }
+
+        &::after {
+          content: attr(data-title);
+        }
+      }
+
+      &[open] {
+        padding-bottom: map-get($spacers, 2);
+
+        summary::before {
+          transform: translateY(-50%) rotate(90deg);
+        }
+      }
+    }
+
+    &.plain {
+      &.success { @include details-plain-variant($green); }
+      &.info { @include details-plain-variant($blue); }
+      &.warning { @include details-plain-variant($yellow); }
+      &.error { @include details-plain-variant($red); }
+      // Default fallback
+      &:not(.success):not(.info):not(.warning):not(.error) { @include details-plain-variant($text-color); }
+    }
+
     @mixin details-code-variant($color) {
       border: 1px solid $color;
       border-left: 4px solid $color;
@@ -374,6 +434,10 @@
     @include block-variant("lemma", "Lemma", "引理", "info-block");
   }
 
+  .definition:not(details) {
+    @include block-variant("definition", "Definition", "定义", "info-block");
+  }
+
   .example:not(details) {
     @include block-variant("example", "Example", "示例", "success-block");
   }
@@ -398,6 +462,19 @@
       display: block;
       margin-bottom: map-get($spacers, 1);
     }
+
+    & > :first-child {
+      margin-top: 0;
+    }
+  }
+
+  .plain:not(details) {
+    @include code-block-variant("neutral-block");
+
+    &.success { @include code-block-variant("success-block"); }
+    &.info { @include code-block-variant("info-block"); }
+    &.warning { @include code-block-variant("warning-block"); }
+    &.error { @include code-block-variant("error-block"); }
   }
 
   .code_block:not(details) {
@@ -448,4 +525,102 @@
   }
 }
 
+/* Images Figure Styles */
+.image-figure {
+  display: block;
+  margin: 2rem auto;
+  text-align: center;
+
+  img {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: scale(1.01);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  figcaption {
+    margin-top: 0.75rem;
+    color: #666;
+    font-size: 0.9em;
+    font-style: italic;
+  }
+}
+
+/* Video Figure Styles */
+.video-figure {
+  display: block;
+  margin: 2rem auto;
+  text-align: center;
+
+  video {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    background-color: #000; /* Video placeholder background */
+  }
+
+  figcaption {
+    margin-top: 0.75rem;
+    color: #666;
+    font-size: 0.9em;
+    font-style: italic;
+  }
+}
+
 /* end custom scss snippet */
+
+/* Artistic Blockquote Style */
+.article__content blockquote:not(.simple) {
+  position: relative;
+  margin: 2rem 0;
+  padding: 1.5rem 1.5rem 1.5rem 3.5rem;
+  color: #555;
+  background-color: #f8f9fa;
+  border-left: 4px solid #e1e4e8;
+  border-radius: 6px;
+  font-family: "Georgia", "Times New Roman", Times, serif;
+  font-size: 1.1em;
+  font-style: italic;
+  line-height: 1.8;
+  
+  /* Decorative Quote Icon */
+  &::before {
+    content: "\201C";
+    position: absolute;
+    top: 0.2rem;
+    left: 1rem;
+    font-size: 4rem;
+    color: rgba(150, 150, 150, 0.25);
+    font-family: Times, serif;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  p {
+    margin: 0;
+  }
+  
+  /* Support for citations within blockquote */
+  footer, cite {
+    display: block;
+    text-align: right;
+    font-size: 0.85em;
+    font-style: normal;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #888;
+    margin-top: 0.5rem;
+    
+    &::before {
+      content: "\2014 \00A0";
+    }
+  }
+}

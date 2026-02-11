@@ -28,3 +28,4 @@ _site/
 
 # Ignore the .py file in the root directory
 *.py
+local/
