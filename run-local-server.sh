@@ -28,7 +28,10 @@ build_site() {
 serve_site() {
     echo "Serving Jekyll site locally..."
     # Serve the site in the background so we can trap signals
-    bundle exec jekyll serve &
+    # Added --incremental for faster rebuilds on file changes
+    # Added --livereload to auto-refresh the browser
+    # Added --force_polling to fix file watching issues on WSL/Windows mounts
+    bundle exec jekyll serve --incremental --livereload --force_polling &
     # Capture the background process's PID
     JEKYLL_PID=$!
     # Wait for the Jekyll server process to finish
