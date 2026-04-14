@@ -1,0 +1,4 @@
+interface:
+  display_name: "IcingMoon Blog"
+  short_description: "Write and maintain this Jekyll blog repo"
+  default_prompt: "Use $icingmoon-blog to draft, revise, or validate a post in this repository."
