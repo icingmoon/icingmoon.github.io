@@ -44,17 +44,7 @@ $$
 4. $$\mathbb{F}_p$$ 上的椭圆曲线 $$E$$ 是 supersingular 的，当且仅当它与定义在 $$\mathbb{F}_{p^2}$$ 上的某条椭圆曲线同构。
 {% enddefinition %}
 
-超奇异椭圆曲线之间的同源具有丰富的结构，也是 SIDH 一类协议的基础，其常见的数学性质如下：
-
-- 阶数：$$\vert E(\mathbb{F}_p) \vert = p + 1$$，或者 $$\vert E(\mathbb{F}_{p^2}) \vert = k(p + 1)$$，其中 $$k$$ 通常为 $$p+1$$。
-- 相同 j-invariant 值的两条曲线 $$E_1, E_2$$ 之间的同构可以表示为
-
-  $$
-  \begin{aligned}
-  \varphi: E_1 & \mapsto E_2 \\
-  (x,y) & \mapsto  (ax + b, cy + d)
-  \end{aligned}
-  $$
+超奇异椭圆曲线之间的同源具有丰富的结构，也是 SIDH 一类协议的基础。由于这类曲线的 Frobenius Trace 等于 0，则其阶为：$$\vert E(\mathbb{F}_p) \vert = p + 1$$，在更一般的扩域上，我们有 $$\vert E(\mathbb{F}_{p^2}) \vert = k(p + 1)$$，其中 $$k$$ 通常为 $$p+1$$。
 
 ### $j$-不变量
 
