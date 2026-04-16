@@ -1,4 +1,18 @@
 .article-list {
+  .article-list__readmore-links {
+    .article-list__readmore-sep {
+      margin: 0 0.35rem;
+      color: $text-color-l;
+    }
+  }
+  .article-list__brief-lang-links {
+    display: inline-flex;
+    gap: 0.5rem;
+    margin-left: map-get($spacers, 2);
+    font-size: map-get($base, font-size-sm);
+    font-weight: map-get($base, font-weight-bold);
+    white-space: nowrap;
+  }
   .item__meta {
     padding: 0 map-get($spacers, 3) 0 0;
     font-family: map-get($base, font-family-code);
@@ -10,6 +24,13 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+    }
+  }
+  @include media-breakpoint-down(md) {
+    .article-list__brief-lang-links {
+      display: block;
+      margin-left: 0;
+      margin-top: map-get($spacers, 1);
     }
   }
 }

@@ -22,4 +22,14 @@
       }
     }
   }
+  .article__info-lang-badge {
+    display: inline-block;
+    padding: 0.12rem 0.55rem;
+    border-radius: 999px;
+    background: rgba($text-color-l, 0.08);
+    color: $text-color;
+    border: 1px solid rgba($text-color-l, 0.18);
+    font-weight: map-get($base, font-weight-bold);
+    letter-spacing: 0.02em;
+  }
 }

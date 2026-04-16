@@ -57,7 +57,10 @@
       {%- if _show_author or _show_date or _pageview -%}
         <ul class="right-col menu">
           {%- if include.article.bilingual -%}
-            <li><i class="fas fa-language"></i> <span>EN/CN</span></li>
+            <li class="article__info-lang">
+              <i class="fas fa-language"></i>
+              <span class="article__info-lang-badge">Bilingual EN/CN</span>
+            </li>
           {%- endif -%}
           {%- if _show_author  -%}
             <li><i class="fas fa-user"></i> <span>{{ _author.name }}</span></li>

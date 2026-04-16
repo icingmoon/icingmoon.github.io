@@ -30,6 +30,23 @@
 
     {%- include snippets/prepend-baseurl.html path=_article.url -%}
     {%- assign _article_url = __return -%}
+    {%- assign _translations = '' -%}
+    {%- assign _translation_zh_url = '' -%}
+    {%- assign _translation_en_url = '' -%}
+    {%- if _article.key -%}
+      {%- assign _translations = site.posts | where: "key", _article.key | sort: "lang" -%}
+      {%- if _translations.size > 1 -%}
+        {%- for _t in _translations -%}
+          {%- include snippets/prepend-baseurl.html path=_t.url -%}
+          {%- assign _translation_url = __return -%}
+          {%- if _t.lang == 'zh' -%}
+            {%- assign _translation_zh_url = _translation_url -%}
+          {%- elsif _t.lang == 'en' -%}
+            {%- assign _translation_en_url = _translation_url -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+    {%- endif -%}
 
     {%- if _article.cover -%}
       {%- include snippets/get-nav-url.html path=_article.cover -%}
@@ -68,7 +85,19 @@
               </div>
             {%- endif -%}
             {%- if include.show_readmore -%}
-              <p><a href="{{ _article_url }}">{{ _locale_readmore }}</a></p>
+              {%- if _translations != '' and _translations.size > 1 -%}
+                <p class="article-list__readmore-links">
+                  <a href="{{ _article_url }}">{{ _locale_readmore }}</a>
+                  {%- if _translation_zh_url != '' -%}
+                    <span class="article-list__readmore-sep">·</span><a href="{{ _translation_zh_url }}">CN</a>
+                  {%- endif -%}
+                  {%- if _translation_en_url != '' -%}
+                    <span class="article-list__readmore-sep">/</span><a href="{{ _translation_en_url }}">EN</a>
+                  {%- endif -%}
+                </p>
+              {%- else -%}
+                <p><a href="{{ _article_url }}">{{ _locale_readmore }}</a></p>
+              {%- endif -%}
             {%- endif -%}
           </div>
           {%- if include.show_info -%}
@@ -105,7 +134,18 @@
           {%- if include.show_info -%}
             <span class="item__meta">{{ _article.date | date: __return }}</span>
           {%- endif -%}
-          <a itemprop="headline" class="item__header" href="{{ _article_url }}">{{ _article.title }}</a></div>
+          <a itemprop="headline" class="item__header" href="{{ _article_url }}">{{ _article.title }}</a>
+          {%- if _translations != '' and _translations.size > 1 -%}
+            <span class="article-list__brief-lang-links">
+              {%- if _translation_zh_url != '' -%}
+                <a href="{{ _translation_zh_url }}">CN</a>
+              {%- endif -%}
+              {%- if _translation_en_url != '' -%}
+                <a href="{{ _translation_en_url }}">EN</a>
+              {%- endif -%}
+            </span>
+          {%- endif -%}
+        </div>
       </li>
 
     {%- elsif include.type == 'grid' -%}
