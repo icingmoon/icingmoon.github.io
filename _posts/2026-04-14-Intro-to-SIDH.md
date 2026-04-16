@@ -12,7 +12,7 @@ published: true
 <!--more-->
 
 {: .error}
-**说明:** 基于椭圆曲线同源的密码方案曾经是 NIST 后量子密码标准化过程中一个很有希望的方向。NIST 在第二轮状态报告中将 SIKE 列入进入第三轮的 Alternate Candidate，之后在第四轮中也继续保留过 SIKE 这一候选。但 2022 年 Castryck 与 Decru 给出了对原始 SIDH 的高效密钥恢复攻击，SIKE 也因此被普遍认为已经失去安全性。传统 SIDH 今天已经不应再被视为可直接部署的安全方案。但是它的设计理念和数学结构仍然非常有启发性，尤其是对于理解基于 isogeny 的密码学构造，以及后续一些改进版本的设计思路，都具有重要的参考价值。
+**说明:** 基于椭圆曲线同源的密码方案曾经是 NIST 后量子密码标准化过程中一个很有希望的方向。NIST 在第二轮状态报告中将 SIKE 列入进入第三轮的 Alternate Candidate，之后在第四轮中也继续保留过 SIKE 这一候选。但 2022 年 Castryck 与 Decru 给出了对原始 SIDH 的高效密钥恢复攻击，传统 SIDH 今天已经不应再被视为可直接部署的安全方案。但是它的设计理念和数学结构仍然非常有启发性，尤其是对于理解基于 isogeny 的密码学构造，以及后续一些改进版本的设计思路，都具有重要的参考价值。
 
 <div class="success-block" markdown="1">
 <div class="block-title">相关链接</div>

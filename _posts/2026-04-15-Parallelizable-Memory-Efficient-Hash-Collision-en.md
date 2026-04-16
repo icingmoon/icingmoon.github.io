@@ -54,22 +54,22 @@ The hash collision problem, or more precisely the second-preimage-style collisio
 
 
 
-Consider the generalized version: given $$k$$ people, what is the probability that at least two of them share the same birthday? When $$k > 365$$, this probability is 1 by the inclusion-exclusion principle. More generally, given a set of size $$N$$, such as the output space of a hash function, we randomly sample $$k \le N$$ values from the set with replacement. Let the probability that at least two sampled values are equal be denoted by $$\mathrm{Pr}(\text{coll})$$. Let $$\mathrm{Pr}(z=0)$$ denote the event that all sampled values are distinct. Then $$\mathrm{Pr}(\text{coll}) = 1 - \mathrm{Pr}(z=0)$$, where:
+Consider the generalized version: given $$k$$ people, what is the probability that at least two of them share the same birthday? When $$k > 365$$, this probability is 1 by the inclusion-exclusion principle. More generally, given a set of size $$N$$, such as the output space of a hash function, we randomly sample $$k \le N$$ values from the set with replacement. Let the probability that at least two sampled values are equal be denoted by $$\Pr\left(\text{coll}\right)$$. Let $$\Pr\left(z=0\right)$$ denote the event that all sampled values are distinct. Then $$\Pr\left(\text{coll}\right) = 1 - \Pr\left(z=0\right)$$, where:
 
 $$
-\mathrm{Pr}(z=0) =  \frac{N}{N} \cdot \frac{N-1}{N} \cdot \frac{N-2}{N} \cdots \frac{N-k+1}{N}
+\Pr\left(z=0\right) =  \frac{N}{N} \cdot \frac{N-1}{N} \cdot \frac{N-2}{N} \cdots \frac{N-k+1}{N}
 $$
 
 Hence the probability that two values coincide, i.e. that a collision occurs, is:
 
 $$
-\mathrm{Pr}(\text{coll}) = 1 - \mathrm{Pr}(z=0)
+\Pr\left(\text{coll}\right) = 1 - \Pr\left(z=0\right)
 $$
 
 For the birthday-paradox problem, this probability exceeds 50% as soon as $$k \ge 23$$. This is much smaller than most people would expect. More generally, when $$k$$ is small relative to $$N$$, we may use the approximation:
 
 $$
-\mathrm{Pr}(\text{coll}) = 1 - \mathrm{Pr}(z=0) \approx 1 - e^{-\frac{k^2}{2N}} > 0.5 \\
+\Pr\left(\text{coll}\right) = 1 - \Pr\left(z=0\right) \approx 1 - e^{-\frac{k^2}{2N}} > 0.5 \\
 \implies e^{-\frac{k^2}{2N}} \approx 0.5 \implies k \approx \sqrt{2N \ln(2)}
 $$
 
@@ -97,41 +97,41 @@ Pollard's rho method was originally developed as an integer-factorization algori
 
 > **Integer factorization problem.** Given a composite integer $$n = p \cdot q$$, how do we recover a non-trivial factor $$p$$?
 
-For Pollard's rho factorization algorithm, the key idea is to define a function $$g(x)$$ that generates a pseudorandom sequence. For example, one may choose the polynomial $$g(x) = x^2 + 1 \mod n$$. This generates the following finite sequence
+For Pollard's rho factorization algorithm, the key idea is to define a function $$g(x)$$ that generates a pseudorandom sequence. For example, one may choose the polynomial $$g(x) = x^2 + 1 \bmod n$$. This generates the following finite sequence
 
 $$
-\{x_0, g(x_0), \cdots, g^k(x_0), \cdots \}
+\left\{x_0, g(x_0), \cdots, g^k(x_0), \cdots \right\}
 $$
 
 where $$g^k$$ denotes repeated composition, and we write $$x_k = g^k(x_0) \in \mathbb{Z}_n$$. However, from the viewpoint modulo $$p$$, the same sequence implicitly contains a subsequence:
 
 $$
-\{x_0, g(x_0), \cdots, g^k(x_0), \cdots \} \mod p
+\left\{x_0, g(x_0), \cdots, g^k(x_0), \cdots \right\} \bmod p
 $$
 
-which is a subsequence of $$\{x_k \mod p\}$$. If the chosen $$g(x)$$ behaves randomly enough, then by the birthday paradox we expect a collision after about $$\mathcal{O}(\sqrt p)$$ steps. This is illustrated by the point $$l_0$$ in the figure below:
+which is a subsequence of $$\left\{x_k \bmod p\right\}$$. If the chosen $$g(x)$$ behaves randomly enough, then by the birthday paradox we expect a collision after about $$\mathcal{O}(\sqrt p)$$ steps. This is illustrated by the point $$l_0$$ in the figure below:
 
 {% include figure.html src="/assets/images/260415-parallelizable-memory-efficient-hash-collision/rho-1720003565526-6.svg" alt="Pollard's rho sequence structure" width="60%" caption="Figure 1. Pollard's method" %}
 
 If the sequence values in Figure 1 are interpreted modulo $$p$$, such a collision means that we have found
 
 $$
-g(x_{l_0- 1}) = g(x_{l_0 + n}) \mod p
+g(x_{l_0- 1}) = g(x_{l_0 + n}) \bmod p
 $$
 
 Since in practice we only see the sequence modulo $$n$$, there is overwhelmingly high probability that
 
 $$
-g(x_{l_0- 1}) \ne g(x_{l_0 + n}) \mod n
+g(x_{l_0- 1}) \ne g(x_{l_0 + n}) \bmod n
 $$
 
 and therefore
 
 $$
-\mathcal{GCD}(g(x_{l_0- 1}) - g(x_{l_0 + n}), n) = p
+\gcd\left(g(x_{l_0- 1}) - g(x_{l_0 + n}), n\right) = p
 $$
 
-reveals a factor of $$n$$. However, during the sequence computation we cannot directly detect which values have collided; comparing against the whole previous sequence via repeated $$\mathcal{GCD}$$ computations would be prohibitively expensive in both time and space. Therefore we need an efficient cycle-detection algorithm to assist Pollard's rho.
+reveals a factor of $$n$$. However, during the sequence computation we cannot directly detect which values have collided; comparing against the whole previous sequence via repeated $$\gcd$$ computations would be prohibitively expensive in both time and space. Therefore we need an efficient cycle-detection algorithm to assist Pollard's rho.
 
 
 {% plain error title="Tortoise and Hare Algorithm" %}
@@ -139,9 +139,9 @@ reveals a factor of $$n$$. However, during the sequence computation we cannot di
 Pollard's rho is often combined with Floyd's algorithm, which is vividly described as the tortoise and hare algorithm.
 
 1. Start both sequences from the same initial point $$x_0$$. Let the slow sequence $$\{x^{(T)}_{i}\}$$ use the update rule $$f_1(x) = g(x)$$, and let the fast sequence $$\{x^{(H)}_{i}\}$$ use $$f_2(x) = g(g(x))= g^2(x)$$. We iteratively compute these sequences while storing only the current values $$x_k^{(T)}, x_{k}^{(H)}$$.
-2. When $$l_0 < n$$, after only $$n$$ iterations we obtain $$x_m^{(T)} = x_{m}^{(H)} \mod p$$, because $$x_{m} = x_{2m} \mod p$$. Hence, while computing the two sequences, Floyd's algorithm repeatedly evaluates $$\mathcal{GCD}(x_k^{(T)} - x_{k}^{(H)}, n)$$, and as soon as this common divisor becomes non-trivial, we recover a prime factor $$p$$.
+2. When $$l_0 < n$$, after only $$n$$ iterations we obtain $$x_m^{(T)} = x_{m}^{(H)} \bmod p$$, because $$x_{m} = x_{2m} \bmod p$$. Hence, while computing the two sequences, Floyd's algorithm repeatedly evaluates $$\gcd\left(x_k^{(T)} - x_{k}^{(H)}, n\right)$$, and as soon as this common divisor becomes non-trivial, we recover a prime factor $$p$$.
 
-For example, if the Floyd meeting point in Figure 1 occurs at the $$i$$-th node (in fact $$i = m$$), then the two values are congruent modulo $$p$$ at that point, but with high probability not congruent modulo $$n$$. Thus $$\mathcal{GCD}(x_i^{(T)} - x_{i}^{(H)}, n)$$ also yields $$p$$.
+For example, if the Floyd meeting point in Figure 1 occurs at the $$i$$-th node (in fact $$i = m$$), then the two values are congruent modulo $$p$$ at that point, but with high probability not congruent modulo $$n$$. Thus $$\gcd\left(x_i^{(T)} - x_{i}^{(H)}, n\right)$$ also yields $$p$$.
 
 As for time complexity, the expected sequence length is $$l_0 + n \approx \mathcal{O}(\sqrt p)$$. Since the slow sequence meets the fast sequence before traversing the entire $$\rho$$-shaped structure, the overall time complexity is $$\mathcal{O}(\sqrt p)$$ and the space complexity is $$\mathcal{O}(1)$$.
 
@@ -169,10 +169,10 @@ def rho(n):
 Readers may wonder about the special role of the collision point $$l_0$$. Let $$a= g(x_{l_0- 1}),\ b= g(x_{l_0 + n}),\ c = x_{l_0}$$. In the factorization setting, where the pseudorandom sequence uses $$f(x) = x^2 + 1$$, the collision at $$l_0$$ means that we have found two distinct values $$a,b$$ such that $$f(a) = f(b) = c$$. In other words, $$a,b$$ are two distinct solutions of
 
 $$
-x^2 = c - 1 \mod p
+x^2 = c - 1 \bmod p
 $$
 
-and thus they are two quadratic residues in $$\mathbb{Z}_p$$ satisfying $$a + b = 0 \mod p$$.
+and thus they are two quadratic residues in $$\mathbb{Z}_p$$ satisfying $$a + b = 0 \bmod p$$.
 
 > **In the integer-factorization setting, we care about recovering the hidden modulus $$p$$, so the rho collision point and the Floyd meeting point are effectively equivalent. But once we move to the hash-collision setting, the meanings of these two points diverge sharply. The hash-collision value is precisely the value at the collision point $$l_0$$.**
 {% endremark %}
@@ -192,20 +192,22 @@ $$
 It follows that $$k = \lceil \frac{l_0}{n} \rceil$$. At this point, the two sequences meet at node $$i$$, but this is not necessarily the collision point itself. We therefore want to continue until reaching $$l_0$$. A useful observation is that the distances $$0 \rightarrow l_0$$ and $$i \rightarrow l_0$$ are equal modulo $$N = n + 1$$. Indeed:
 
 $$
-\begin{cases}
+\left\{
+\begin{aligned}
 d_1 &= l_0 + 1 + n - i \\
 d_2 &= l_0
-\end{cases}
+\end{aligned}
+\right.
 $$
 
 Thus
 
 $$
 \begin{aligned}
-d_1 & =  l_0 + n + 1 - i \mod N \\
- &= l_0 - kN \mod N \\
- &= l_0 \mod N \\
- &= d_2 \mod N
+d_1 & =  l_0 + n + 1 - i \bmod N \\
+ &= l_0 - kN \bmod N \\
+ &= l_0 \bmod N \\
+ &= d_2 \bmod N
 \end{aligned}
 $$
 
