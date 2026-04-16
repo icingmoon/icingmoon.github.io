@@ -1,14 +1,14 @@
 {
   "version": 3,
   "skills": {
-    "icingmoon-blog": {
+    "blog-skill": {
       "source": "local/icingmoon.github.io",
       "sourceType": "local",
       "sourceUrl": "",
       "skillPath": "skill/SKILL.md",
-      "skillFolderHash": "1a257a2677f314611c42548eec8c3dbae48fb285",
+      "skillFolderHash": "c3189eb95ccd8c5bae274f989ab75c2aef4cf0c6",
       "installedAt": "2026-04-14T07:35:01.000Z",
-      "updatedAt": "2026-04-14T12:42:37.000Z"
+      "updatedAt": "2026-04-15T11:37:33.000Z"
     }
   },
   "dismissed": {},

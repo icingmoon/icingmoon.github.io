@@ -1,4 +1,4 @@
-# IcingMoon Blog Post Style
+# Blog Post Style
 
 ## Canonical Sources
 
@@ -52,6 +52,16 @@ For bilingual pairs:
 - Set `hidden: true` on the translation that should stay out of indexes.
 - Set `lang` explicitly on both files.
 - Learn this pairing pattern before creating or restructuring bilingual posts.
+
+When generating a bilingual counterpart from an existing post:
+
+- Treat the original post as the primary/default version.
+- Do not demote the original post to a hidden translation.
+- Keep the original filename unchanged whenever possible.
+- Name the translated counterpart by appending the target language suffix before `.md`, for example:
+  - Chinese original `YYYY-MM-DD-title.md` -> English translation `YYYY-MM-DD-title-en.md`
+  - English original `YYYY-MM-DD-title.md` -> Chinese translation `YYYY-MM-DD-title-zh.md`
+- If an older file uses an inconsistent suffix such as duplicated `.md`, normalize new work to the clean single-suffix form instead of copying the mistake.
 
 ## Opening Structure
 

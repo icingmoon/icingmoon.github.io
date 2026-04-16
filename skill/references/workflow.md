@@ -1,4 +1,4 @@
-# IcingMoon Blog Workflow
+# Blog Workflow
 
 ## Prerequisites
 
@@ -72,7 +72,7 @@ Restart the preview server after config edits.
 
 This repo appears to publish from the Git repository directly:
 
-- `_config.yml` sets `repository: IcingMoon/icingmoon.github.io`
+- `_config.yml` sets the `repository` field for the current GitHub Pages repo
 - `update_blog.sh` stages all changes, commits, and pushes `origin master`
 
 The helper script is:

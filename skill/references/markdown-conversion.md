@@ -5,6 +5,19 @@
 Convert a generic Markdown document into a polished post for this repository.
 Do not preserve the raw source formatting mechanically when the repo already has a better rendering primitive.
 
+When the task is to turn a local Markdown draft into a publishable post, default to minimal-invasive editing:
+
+- preserve the original content coverage as much as possible
+- preserve the original argument order and writing logic as much as possible
+- do not delete sections, examples, or technical discussion unless the user explicitly asks for compression or restructuring
+- do not expand discussion by default; only do so when the user clearly asks for it
+
+In that default mode, the allowed editorial changes are:
+
+1. fix obvious typos directly, and report them in the final response
+2. polish sentence expression, including grammar fixes, wording improvements, and local phrasing cleanup
+3. expand part of the discussion only when the user explicitly requests expansion
+
 Use recent posts as the style baseline first.
 
 Prefer these over much older posts because the newer ones reflect the completed math/code/callout tooling.
@@ -16,13 +29,14 @@ For exact block syntax, bilingual declarations, and beautification primitives, a
 ## Conversion Workflow
 
 1. Identify the article type: technical note, crypto writeup, tutorial, or image-heavy essay.
-2. Create proper front matter and opening structure.
-3. Normalize formulas to this repo's MathJax habits.
-4. Move or reference images under a dedicated `assets/images/<post-subdir>/` folder when the post owns local images.
-5. Replace plain Markdown callouts and weak HTML with the repo's custom blocks.
-6. Upgrade code fences, collapsible sections, and theorem-like environments where the content benefits.
-7. If the post is bilingual or will likely get a translation, preserve the structure needed for paired articles.
-8. For Chinese technical notes, localize section titles and subsection names instead of leaving large English heading chunks from the source.
+2. Preserve the article's information density and paragraph logic unless the user explicitly asks for shortening or reorganization.
+3. Create proper front matter and opening structure.
+4. Normalize formulas to this repo's MathJax habits.
+5. Move or reference images under a dedicated `assets/images/<post-subdir>/` folder when the post owns local images.
+6. Replace plain Markdown callouts and weak HTML with the repo's custom blocks.
+7. Upgrade code fences, collapsible sections, and theorem-like environments where the content benefits.
+8. If the post is bilingual or will likely get a translation, preserve the structure needed for paired articles.
+9. For Chinese technical notes, localize section titles and subsection names instead of leaving large English heading chunks from the source.
 
 ## Math Rules
 
@@ -126,6 +140,13 @@ When converting, actively improve presentation using the repo's current componen
 - Mark challenge statements, small observations, and checkpoints with `success` or `info` blocks.
 - Add `title="..."`, `type="..."`, and `fold="true"` to code fences when filenames or semantics are useful.
 - Use `{% plain fold ... %}` for long side notes, expanded examples, or supplementary images.
+
+But keep these limits in mind during beautification:
+
+- presentation upgrades should not silently remove technical detail from the source
+- presentation upgrades should not reorder core claims unless the user asked for restructuring
+- sentence-level polishing is preferred over paragraph deletion
+- if you correct obvious typos, keep a note so the final response can list what was corrected
 
 The target is not "same Markdown but valid."
 The target is "looks like it belongs in this blog."

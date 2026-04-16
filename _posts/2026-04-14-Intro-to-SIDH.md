@@ -21,7 +21,7 @@ published: true
 - Supersingular isogeny key exchange for beginners: <https://eprint.iacr.org/2019/1321.pdf>
 </div>
 
-> 从此篇博客开始，本站点将使用 Agent（例如 Codex） 以及自定义的 [skills](https://github.com/IcingMoon/icingmoon.github.io/tree/master/skill) 来辅助博客发布，包括将本地的 Markdown 笔记进行自动转换和内容润色。此后也可能会在后续的博客中使用 Agent 来辅助生成部分内容，AI 生成的内容会明确声明。
+> 从此篇博客开始，本站点将使用 Agent（例如 Codex） 以及自定义的 [博客 skill](https://github.com/IcingMoon/icingmoon.github.io/tree/master/skill) 来辅助博客发布，包括将本地的 Markdown 笔记进行自动转换和内容润色。此后也可能会在后续的博客中使用 Agent 来辅助生成部分内容，AI 生成的内容会明确声明。
 
 ---
 
