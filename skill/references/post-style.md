@@ -262,6 +262,20 @@ Practical implications:
 - Keep shared macro definitions in a hidden `<p hidden>$$ ... $$</p>` block near the top when the post uses many custom commands.
 - Do not remove MathJax wrappers from existing posts unless the user explicitly wants a rewrite.
 
+Preferred LaTeX normalization habits for this repo:
+
+- When delimiters wrap a visibly tall expression such as fractions, sums, matrices, or multiline terms, prefer `\left( ... \right)`, `\left[ ... \right]`, `\left\{ ... \right\}`, `\left\langle ... \right\rangle` instead of fixed-size delimiters.
+- Do not force `\left` and `\right` on every small inline pair of parentheses; use them primarily when the visual height matters.
+- For absolute values, norms, and cardinalities, prefer `\vert ... \vert`, `\lVert ... \rVert`, and related LaTeX delimiters over raw ASCII bars.
+- For named operators and textual math functions, prefer semantic LaTeX such as `\operatorname{Adv}`, `\operatorname{poly}`, `\gcd`, `\Pr`, `\mathbb{E}` instead of plain italic identifiers when the symbol is conceptually an operator.
+- For set-builder notation and conditions, prefer `\mid` or `\colon` over a raw `|` when the expression benefits from clearer mathematical meaning.
+- For modular arithmetic, prefer `\mod`, `\bmod`, or `\pmod{...}` instead of raw text like `mod`.
+- For short natural-language insertions inside formulas, prefer `\text{...}` instead of mixing plain text directly into math mode.
+- Prefer `\left\langle ... \right\rangle` for generated groups, spans, or inner-product-like notation rather than raw angle brackets.
+- Use `\frac` in display math and important inline formulas when readability matters; avoid cramped slash forms for nontrivial expressions.
+- In multiline derivations, prefer `aligned`, `alignedat`, or similar structured environments over manually spaced lines.
+- When an expression uses a delimiter on only one side, use `\left.` or `\right.` instead of mismatched raw delimiters.
+
 ## Asset And Link Conventions
 
 - Store local attachments under `/assets/...`.

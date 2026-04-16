@@ -50,6 +50,10 @@ Rules to enforce:
 - If the source Markdown uses `$...$`, convert it to `$$...$$`.
 - If a formula contains absolute-value or norm bars such as `$|x|$` or `$|E(\mathbb{F}_p)|$`, rewrite the bars with LaTeX commands such as `\vert x \vert` or `\vert E(\mathbb{F}_p) \vert` to avoid accidental Markdown table parsing.
 - If the source uses LaTeX theorem environments that Jekyll will not understand directly, convert them to repo-supported blocks.
+- When parentheses, brackets, braces, or angle brackets wrap tall expressions, normalize them to `\left ... \right` style delimiters where appropriate.
+- For generated groups, sets, operators, and modular notation, prefer semantic LaTeX such as `\left\langle ... \right\rangle`, `\operatorname{...}`, `\mid`, `\colon`, `\bmod`, and `\pmod{...}` over plain ASCII approximations.
+- Use `\text{...}` for short text inserted inside math mode instead of raw prose in formulas.
+- Preserve formula meaning when normalizing notation; these are formatting upgrades, not mathematical rewrites.
 
 Example inline:
 
@@ -71,6 +75,16 @@ $$
 
 which completes the derivation.
 ```
+
+### Additional Formula-Normalization Heuristics
+
+- Rewrite `(...)` to `\left( ... \right)` when the content includes a fraction, sum, product, matrix, case split, or another tall subexpression.
+- Keep small inline delimiters simple when `\left` and `\right` would add visual noise.
+- Rewrite raw group-generation notation like `<P>` or `<P, Q>` to `\left\langle P \right\rangle` and `\left\langle P, Q \right\rangle` when the source is using mathematical angle-bracket notation.
+- Prefer `\operatorname{ker}`, `\operatorname{im}`, `\operatorname{poly}`, `\operatorname{Span}` or the repo's established operator spelling when the source currently uses plain italic identifiers for operators.
+- Prefer `\Pr`, `\mathbb{E}`, and similar standard notation for probability and expectation when the source already treats them as operators.
+- Replace textual `mod p` inside formulas with `\bmod p` or `\pmod{p}` when that improves readability and matches the intended math style.
+- Prefer `\coloneqq` or `:=` consistently for definitions within the same article rather than mixing several informal styles, but do not introduce package-dependent commands if the source already uses `:=` successfully.
 
 ## Image Rules
 
